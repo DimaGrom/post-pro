@@ -1,2 +1,0 @@
-(this["webpackJsonpmy-historys"]=this["webpackJsonpmy-historys"]||[]).push([[0],{12:function(t,e,s){"use strict";s.r(e);var n=s(2),r=(s(0),s(4)),c=s.n(r),i=function(){return Object(n.jsx)("div",{children:"App"})},o=s(5);c.a.render(Object(n.jsx)(o.a,{children:Object(n.jsx)(i,{})}),document.getElementById("root"))}},[[12,1,2]]]);
-//# sourceMappingURL=main.ed6cdc11.chunk.js.map

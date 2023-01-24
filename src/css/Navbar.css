@@ -1,0 +1,22 @@
+.Navbar {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 20px 0;
+}
+
+.Navbar__item {
+	display: flex;
+}
+
+.Navbar__item a {
+	padding: 0 10px;
+	white-space: nowrap;
+	color: white;
+	opacity: 0.7;
+	transition: 0.4s;
+}
+
+.Navbar__item a:hover {
+	opacity: 1;
+}

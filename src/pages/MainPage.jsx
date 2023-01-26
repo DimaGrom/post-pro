@@ -1,17 +1,22 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import '../css/style.css'
 import '../css/MainPage.css'
 import {useNavigate} from 'react-router-dom'
-// import {getAllPost} from '../redux/post_slice.js'
-// import PostItem from '../components/PostItem.jsx'
+import localforage from "localforage"
+import {getAllPosts} from '../utils/postLocalForage.js'
+import PostItem from '../components/PostItem.jsx'
 
 const MainPage = () => {
 	const navigate = useNavigate()
-	
-	const posts = []
+	// const posts = []
+
+	const [posts, setPosts] = useState([])
+	useEffect(() => {
+		getAllPosts(setPosts)
+	}, [navigate])
 
 	const handleCreatePost = () => {
-		console.log(23)
+		// console.log(23)
 		navigate('/new')
 	}
 
@@ -32,7 +37,9 @@ const MainPage = () => {
 		<div className='MainPage'>
 
 			<div className="posts">
-	
+				{
+					posts && posts.map((m, k) => <PostItem key={k} post={m} />)
+				}
 			</div> 
 
 		</div>

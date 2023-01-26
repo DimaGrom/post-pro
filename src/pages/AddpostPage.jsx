@@ -1,24 +1,37 @@
 import React, {useState} from 'react'
 import '../css/style.css'
 import '../css/AddpostPage.css'
-
-// import {useDispatch} from 'react-redux'
+import localforage from "localforage"
 import {useNavigate} from 'react-router-dom'
+import {createPost} from '../utils/postLocalForage.js'
 
 const AddpostPage  = () => {
-	// const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const [image, setimage] = useState('')
 	const [title, setTitle] = useState('')
 	const [text, setText] = useState('')
 
+
 	const handleSubmit = () => {
-		const post = new FormData()
-		post.append('image', image)
-		post.append('title', title)
-		post.append('text', text)
-		// dispatch(createPost(post))
-		// navigate('/')
+		const post = {}
+		post.image = image
+		post.title = title
+		post.text = text
+
+		createPost(post)
+		navigate('/')
+	}
+
+	const handleSubmitTest = () => {
+		localforage.getItem("post")
+			.then(val => {
+    		console.log("post: ", val)
+    	})
+		
+	}
+
+	const handleSubmitremove = () => {
+		localforage.removeItem('post')
 	}
 
 	return (
@@ -62,7 +75,12 @@ const AddpostPage  = () => {
 					</label>
 				</div>
 				<div className='button_sibmit'>
+
 					<button onClick={handleSubmit} className='submit'>Добавить</button>
+					<button onClick={handleSubmitTest} className='submit'>Тест</button>
+
+					<button onClick={handleSubmitremove} className='submit'>Очистить</button>
+
 					<button onClick={() => navigate('/')} className='submit'>Отмена</button>
 				</div>
 			</form>

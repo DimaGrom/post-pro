@@ -16,9 +16,6 @@ export const createPost = (post) => {
 			localforage.setItem('post', [...data, post])
 			.then(() => {
 				localforage.getItem('post')
-					.then(data => {
-						console.log(data)
-					})
 			})
 		} else {
 			localforage.setItem('post', [post])

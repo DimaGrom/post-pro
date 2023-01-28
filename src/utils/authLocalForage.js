@@ -1,7 +1,11 @@
+import React from 'react'
 import localforage from "localforage"
 import uniqid from 'uniqid'
 
-export const registerUser = (username, password) => {
+
+
+
+export const registerUser = (username, password, set) => {
 	if(username === '' && password === '') {
 		return console.log('Имя и пароль должны быть заполнены.')
 	}
@@ -20,7 +24,9 @@ export const registerUser = (username, password) => {
 
 					localforage.setItem('users', [...data, newUser])
 					localforage.setItem('token', newUser.id)
-					console.log('data ', data)
+
+					set(true)
+					// console.log('data ', data)
 					return console.log('Поздравляю с регистрацией!')
 				}
 			} else {
@@ -31,7 +37,9 @@ export const registerUser = (username, password) => {
 
 				localforage.setItem('users', [newUser])
 				localforage.setItem('token', newUser.id)
-				console.log('data ', data)
+				
+					set(true)
+				// console.log('data ', data)
 				return console.log('Поздравляю с регистрацией!')
 			}
 		})

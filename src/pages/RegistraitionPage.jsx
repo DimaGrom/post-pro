@@ -17,8 +17,7 @@ const RegistrationPage  = () => {
 	const {auth, setAuth} = useContext(Context)
 
 	const handleSubmit = () => {
-			registerUser(username, password)
-			setAuth(!auth)
+			registerUser(username, password, setAuth)
 	}
 
 	const handleRemoveLocal = () => {

@@ -10,6 +10,7 @@ export const getAllPosts = (set) => {
 }
 
 export const createPost = (post) => {
+	// console.log('post createPost ', post)
 	localforage.getItem('post')
 	.then(data => {
 		if(data) {
@@ -19,14 +20,21 @@ export const createPost = (post) => {
 							post.author = token
 						}
 					})
-				post.views = 0
-				post.comments = 0
-				post.datecreate = Date.now()
-				post.datedate = new Date()
-			localforage.setItem('post', [...data, post])
-			.then(() => {
-				localforage.getItem('post')
-			})
+				localforage.getItem('users')
+					.then(users => {
+						if(users) {
+							const user = users.find(f => f.id === post.author)
+							console.log('createPost user', user)
+							post.authName = user.userName
+						}
+					})
+					.then(() => {
+						post.views = 0
+						post.comments = 0
+						post.datecreate = Date.now()
+						post.datedate = new Date()
+						localforage.setItem('post', [...data, post])
+					})
 		} else {
 			localforage.getItem('token')
 					.then(token => {
@@ -34,7 +42,20 @@ export const createPost = (post) => {
 							post.author = token
 						}
 					})
-			localforage.setItem('post', [post])
+					localforage.getItem('users')
+					.then(users => {
+						if(users) {
+							const user = users.find(f => f.id === post.author)
+							post.authName = user.userName
+						}
+					})
+					.then(() => {
+						post.views = 0
+						post.comments = 0
+						post.datecreate = Date.now()
+						post.datedate = new Date()
+						localforage.setItem('post', [post])
+					})
 		}			
 	})
 }

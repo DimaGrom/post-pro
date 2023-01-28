@@ -43,7 +43,7 @@ const MainPage = () => {
 
 			<div className="posts">
 				{
-					posts && posts.map((m, k) => <PostItem key={k} post={m} />)
+					posts && posts.map((m, k) => <PostItem key={k} post={m} auth={auth} />)
 				}
 			</div> 
 

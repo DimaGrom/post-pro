@@ -17,7 +17,7 @@ export const registerUser = (username, password, set) => {
 					return console.log('Данное имя уже существует. Поробуйте новое имя.')
 				} else {
 					const newUser = {}
-					newUser.name = username
+					newUser.userName = username
 					newUser.password = password
 					newUser.id = uniqid()
 
@@ -29,7 +29,7 @@ export const registerUser = (username, password, set) => {
 				}
 			} else {
 				const newUser = {}
-				newUser.name = username
+				newUser.userName = username
 				newUser.password = password
 				newUser.id = uniqid()
 

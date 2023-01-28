@@ -8,20 +8,29 @@ import RegistrationPage from './pages/RegistraitionPage.jsx'
 import {Routes, Route} from 'react-router-dom'
 import {Context} from './utils/Context.js'
 import {getMe} from './utils/authLocalForage.js'
-
+import {getToken} from './utils/token.js'
 
 const App = () => {		
 
 	const [auth, setAuth] = useState(false)
+	const [check, setCheck] = useState(false)
+	const [token, setToken] = useState('')
 
 	useEffect(() => {
 		getMe(setAuth)
+		getToken(setToken)
 	}, [])
 	
 	// console.log('auth ', auth)	
 
 	return (
-		<Context.Provider value={{auth, setAuth}}>
+		<Context.Provider value={{
+			auth,
+			setAuth, 
+			check, 
+			setCheck,
+			token
+		}}>
 			<Layout>
 				<Routes>
 					<Route path='/' element={<MainPage />} />

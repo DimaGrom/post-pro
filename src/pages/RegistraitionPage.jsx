@@ -1,7 +1,7 @@
-import React, {useState, useContext} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import '../css/style.css'
 import '../css/RegistrationPage.css'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import {registerUser} from '../utils/authLocalForage.js'
 import {Context} from '../utils/Context.js'
 
@@ -11,13 +11,19 @@ import localforage from "localforage"
 
 
 const RegistrationPage  = () => {
-
+	const navigate = useNavigate()
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
 	const {auth, setAuth} = useContext(Context)
 
+	useEffect(() => {
+		if(auth) {
+				navigate('/')
+			}	
+	}, [auth])
+
 	const handleSubmit = () => {
-			registerUser(username, password, setAuth)
+			registerUser(username, password, setAuth)	
 	}
 
 	const handleRemoveLocal = () => {

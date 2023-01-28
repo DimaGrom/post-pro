@@ -4,7 +4,6 @@ import uniqid from 'uniqid'
 
 
 
-
 export const registerUser = (username, password, set) => {
 	if(username === '' && password === '') {
 		return console.log('Имя и пароль должны быть заполнены.')
@@ -24,7 +23,6 @@ export const registerUser = (username, password, set) => {
 
 					localforage.setItem('users', [...data, newUser])
 					localforage.setItem('token', newUser.id)
-
 					set(true)
 					// console.log('data ', data)
 					return console.log('Поздравляю с регистрацией!')
@@ -37,7 +35,6 @@ export const registerUser = (username, password, set) => {
 
 				localforage.setItem('users', [newUser])
 				localforage.setItem('token', newUser.id)
-				
 					set(true)
 				// console.log('data ', data)
 				return console.log('Поздравляю с регистрацией!')

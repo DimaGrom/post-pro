@@ -10,7 +10,7 @@ const PostItem = ({post}) => {
 		)
 	}
 
-	console.log('post PostItem ', post)
+	// console.log('post PostItem ', post)
 
 	return (
 		<div className='PostItem'>

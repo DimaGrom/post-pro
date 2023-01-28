@@ -18,7 +18,7 @@ const App = () => {
 		getMe(setAuth)
 	}, [])
 	
-	console.log('auth ', auth)	
+	// console.log('auth ', auth)	
 
 	return (
 		<Context.Provider value={{auth, setAuth}}>

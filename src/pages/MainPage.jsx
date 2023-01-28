@@ -1,15 +1,17 @@
-import React, {useEffect, useState} from 'react'
+import React, {useEffect, useState, useContext} from 'react'
 import '../css/style.css'
 import '../css/MainPage.css'
 import {useNavigate} from 'react-router-dom'
 import localforage from "localforage"
 import {getAllPosts} from '../utils/postLocalForage.js'
 import PostItem from '../components/PostItem.jsx'
+import {Context} from '../utils/Context.js'
 
 
 const MainPage = () => {
 	const navigate = useNavigate()
 	const [posts, setPosts] = useState([])
+	const {auth} = useContext(Context)
 
 	useEffect(() => {
 		getAllPosts(setPosts)
@@ -25,7 +27,11 @@ const MainPage = () => {
 				<div className='not_post'>
 					<h2>Постов нет</h2>
 					<div className='addpost'>
-						<button onClick={handleCreatePost}>Создать пост</button>
+						{
+							auth && (
+								<button onClick={handleCreatePost}>Создать пост</button>
+							)	
+						}
 					</div>
 				</div>	
 			</div>

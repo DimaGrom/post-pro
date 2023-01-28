@@ -5,12 +5,12 @@ import localforage from "localforage"
 import {useNavigate} from 'react-router-dom'
 import {createPost} from '../utils/postLocalForage.js'
 
+
 const AddpostPage  = () => {
 	const navigate = useNavigate()
 	const [image, setimage] = useState('')
 	const [title, setTitle] = useState('')
 	const [text, setText] = useState('')
-
 
 	const handleSubmit = () => {
 		const post = {}
@@ -19,7 +19,7 @@ const AddpostPage  = () => {
 		post.text = text
 
 		createPost(post)
-		navigate('/')
+		navigate('/cong')	
 	}
 
 	const handleSubmitTest = () => {

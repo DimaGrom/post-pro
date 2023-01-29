@@ -1,4 +1,3 @@
-import React from 'react'
 import localforage from "localforage"
 import uniqid from 'uniqid'
 
@@ -11,7 +10,7 @@ export const registerUser = (username, password, set) => {
 	localforage.getItem('users')
 		.then(data => {
 			if(data) {
-				const check = data.find(f => f.name === username)
+				const check = data.find(f => f.userName === username)
 				if(check) {
 					console.log('data ', data)
 					return console.log('Данное имя уже существует. Поробуйте новое имя.')
@@ -40,6 +39,26 @@ export const registerUser = (username, password, set) => {
 				return console.log('Поздравляю с регистрацией!')
 			}
 		})
+}
+
+export const loginUser = (username, password, set) => {
+	if(username === '' && password === '') {
+		return console.log('Имя и пароль должны быть заполнены.')
+	}
+	localforage.getItem('users')
+		.then(data => {
+			if(data) {
+				const check = data.find(f => f.userName === username && f.password === password)
+				if(check) {
+					console.log('data ', data)
+					set(true)
+					localforage.setItem('token', check.id)
+				} else {
+					return console.log('Неверно введен пароль или логин.')
+				}
+			}
+		})
+
 }
 
 export const getMe = (set) => {

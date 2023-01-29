@@ -7,6 +7,7 @@ import commentImg from '../icons/comment_01.png'
 import editImg from '../icons/edit_02.png'
 import deleteImg from '../icons/delete_01.png'
 import {Context} from '../utils/Context.js'
+import {NavLink} from 'react-router-dom'
 
 const PostItem = ({post, auth}) => {
   const {token} = useContext(Context)
@@ -19,14 +20,14 @@ const PostItem = ({post, auth}) => {
 		)
 	}
 
-	//console.log('post PostItem ', post)
-	console.log('post, auth PostItem ', post.author, auth)
+	// console.log('post PostItem ', post)
+	// console.log('post, auth PostItem ', post.author, auth)
 
 	return (
 		<div className='PostItem'>
 
 			<div className='flext'>
-				<div className='image'>
+				<div className={post.image ? 'image' : 'notimage'}>
 					{
 						post.image && (
 							<img
@@ -55,8 +56,10 @@ const PostItem = ({post, auth}) => {
 			<div className='PostItem_icons'>
 				<div className='PostItem_icons__pablic'>
 					<div>
-						<img src={viewsImg} alt='Просмотров' />
-						<span>{post.views}</span>
+						<NavLink to={`/${post.id}`}>
+							<img src={viewsImg} alt='Просмотров' />
+							<span>{post.views}</span>
+						</NavLink>
 					</div>
 					<div>
 						<img src={commentImg} alt='Комментарии' />

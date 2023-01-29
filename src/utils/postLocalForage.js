@@ -1,4 +1,5 @@
 import localforage from "localforage"
+import uniqid from 'uniqid'
 
 export const getAllPosts = (set) => {
 	localforage.getItem('post')
@@ -29,6 +30,7 @@ export const createPost = (post) => {
 						}
 					})
 					.then(() => {
+						post.id = uniqid()
 						post.views = 0
 						post.comments = 0
 						post.datecreate = Date.now()
@@ -50,6 +52,7 @@ export const createPost = (post) => {
 						}
 					})
 					.then(() => {
+						post.id = uniqid()
 						post.views = 0
 						post.comments = 0
 						post.datecreate = Date.now()

@@ -1,10 +1,9 @@
-import React, {useState, useContext, useEffect} from 'react'
+import React, {useState} from 'react'
 import '../css/style.css'
 import '../css/AddpostPage.css'
 import localforage from "localforage"
 import {useNavigate} from 'react-router-dom'
 import {createPost} from '../utils/postLocalForage.js'
-import {Context} from '../utils/Context.js'
 
 
 const AddpostPage  = () => {
@@ -12,7 +11,7 @@ const AddpostPage  = () => {
 	const [image, setimage] = useState('')
 	const [title, setTitle] = useState('')
 	const [text, setText] = useState('')
-	const {check, setCheck} = useContext(Context)
+
 
 	const handleCreatePost = () => {
 		const post = {}
@@ -21,7 +20,6 @@ const AddpostPage  = () => {
 		post.text = text
 
 		createPost(post)
-		setCheck(!check)
 		navigate('/cong')	
 	}
 

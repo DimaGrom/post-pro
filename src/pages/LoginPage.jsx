@@ -1,17 +1,24 @@
-import React, {useState} from 'react'
+import React, {useState, useContext, useEffect} from 'react'
 import '../css/style.css'
 import '../css/LoginPage.css'
-import {NavLink} from 'react-router-dom'
-
-
+import {NavLink, useNavigate} from 'react-router-dom'
+import {loginUser} from '../utils/authLocalForage.js'
+import {Context} from '../utils/Context.js'
 
 const LoginPage  = () => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const {auth, setAuth} = useContext(Context)
+	const navigate = useNavigate()
 
+	useEffect(() => {
+		if(auth) {
+			navigate('/')
+		}
+	}, [auth])
 
 	const handleSubmit = () => {
-		
+		loginUser(username, password, setAuth)
 	}
 
 	return (

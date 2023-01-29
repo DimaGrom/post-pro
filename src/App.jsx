@@ -5,6 +5,7 @@ import AddpostPage from './pages/AddpostPage.jsx'
 import CongrachulatePage from './pages/CongrachulatePage.jsx'
 import LoginPage from './pages/LoginPage.jsx'
 import RegistrationPage from './pages/RegistraitionPage.jsx'
+import PostPage from './pages/PostPage.jsx'
 import {Routes, Route} from 'react-router-dom'
 import {Context} from './utils/Context.js'
 import {getMe} from './utils/authLocalForage.js'
@@ -38,6 +39,7 @@ const App = () => {
 					<Route path='/cong' element={<CongrachulatePage />} />
 					<Route path='/login' element={<LoginPage />} />
 					<Route path='/registration' element={<RegistrationPage />} />
+					<Route path="/:id" element={<PostPage />} />
 				</Routes>
 			</Layout>
 		</Context.Provider>

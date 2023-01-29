@@ -1,0 +1,30 @@
+.CongrachulatePage h1 {
+	color: white;
+	font-size: 18px;
+	margin: 50px 0;
+}
+
+.CongrachulatePage div {
+	color: wheat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.CongrachulatePage a {
+ 	color: white;
+    font-size: 16px;
+    text-decoration: none;
+    border: solid white 1px;
+    padding: 4px 40px;
+    border-radius: 2px;
+    box-sizing: border-box;
+    outline: none;
+    opacity: 0.6;
+    transition: 0.4s;
+ }
+
+ .CongrachulatePage a:hover {
+ 	opacity: 1;
+ }

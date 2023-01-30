@@ -35,6 +35,16 @@
 	margin: 10px 20px;
 }
 
+.LoginPage  label span {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.LoginPage  label span .red {
+    color: red;
+}
+
 .LoginPage  input {
 	color: white;
     border: solid white 1px;
@@ -64,7 +74,7 @@
     align-items: center;
     justify-content: center;
     margin-top: 10px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .LoginPage .login button {
@@ -79,4 +89,14 @@
 
 .LoginPage .login button:hover {
 	background: #0ea5e9;
+}
+
+.LoginPage h4 {
+    color: red;
+    margin-bottom: 10px;
+    opacity: 0;
+}
+
+.LoginPage h4.opasity1 {
+    opacity: 1;
 }

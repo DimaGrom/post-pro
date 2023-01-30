@@ -8,6 +8,7 @@ import {Context} from '../utils/Context.js'
 const LoginPage  = () => {
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const [statuse, setStatuse] = useState('')
 	const {auth, setAuth} = useContext(Context)
 	const navigate = useNavigate()
 
@@ -18,7 +19,19 @@ const LoginPage  = () => {
 	}, [auth])
 
 	const handleSubmit = () => {
-		loginUser(username, password, setAuth)
+		loginUser(username, password, setAuth, setStatuse)
+	}
+
+	console.log('LoginPage statuse ', statuse)
+
+	const handleName = (e) => {
+		setUsername(e.target.value)
+		setStatuse('')
+	}
+
+	const handleRassword = (e) => {
+		setPassword(e.target.value)
+		setStatuse('')
 	}
 
 	return (
@@ -26,26 +39,43 @@ const LoginPage  = () => {
 			<h1>Авторизация</h1>
 			<form onSubmit={e => e.preventDefault()}>
 				<label>
-					Имя:
+					<span>
+						<span>Имя:</span> 
+							{
+								statuse === '404' && (
+									<span className='red'>Обязательно для заполнения</span>
+								)
+							}	
+						</span>			
 					<input 
 						type='text'
 						placeholder='Username'
 						value={username}
-						onChange={e => setUsername(e.target.value)}
+						onChange={e => handleName(e)}
 					/>
 				</label>
 				<label>
-					Пароль:
+					<span>
+						<span>Пароль:</span> 
+							{
+								statuse === '404' && (
+									<span className='red'>Обязательно для заполнения</span>
+								)
+							}	
+						</span>
 					<input 
 						type='password'
 						placeholder='Username'
 						value={password}
-						onChange={e => setPassword(e.target.value)}
+						onChange={e => handleRassword(e)}
 					/>
 				</label>
 				<div className='login'>
 					<button onClick={handleSubmit}>Войти</button>
 					<NavLink to='/registration'>Нет акаунта?</NavLink>
+				</div>
+				<div>
+					<h4 className={statuse === '404' ? ' opasity1' : ''}>Неверно имя или пароль</h4>
 				</div>
 			</form>
 		</div>

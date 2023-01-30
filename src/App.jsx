@@ -16,6 +16,7 @@ const App = () => {
 	const [auth, setAuth] = useState(false)
 	const [check, setCheck] = useState(false)
 	const [token, setToken] = useState('')
+	
 
 	useEffect(() => {
 		getMe(setAuth)

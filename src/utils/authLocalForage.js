@@ -41,9 +41,10 @@ export const registerUser = (username, password, set) => {
 		})
 }
 
-export const loginUser = (username, password, set) => {
+export const loginUser = (username, password, set, status) => {
 	if(username === '' && password === '') {
-		return console.log('Имя и пароль должны быть заполнены.')
+		console.log('Имя и пароль должны быть заполнены.')
+		return status('404') 
 	}
 	localforage.getItem('users')
 		.then(data => {
@@ -54,7 +55,8 @@ export const loginUser = (username, password, set) => {
 					set(true)
 					localforage.setItem('token', check.id)
 				} else {
-					return console.log('Неверно введен пароль или логин.')
+					 console.log('Неверно введен пароль или логин.')
+					 return status('404') 
 				}
 			}
 		})

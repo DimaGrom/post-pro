@@ -52,6 +52,12 @@
 	width: 65%;
 }
 
+@media (max-width: 740px) {
+	.MainPage .posts {
+		width: 100%;
+	}
+}
+
 .MainPage .popularposts {
 	width: 30%;
 }

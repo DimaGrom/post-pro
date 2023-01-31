@@ -1,19 +1,21 @@
 import react, {useState, useContext} from 'react'
 import '../css/style.css'
 import '../css/Navbar.css'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import {Context} from '../utils/Context.js'
 import {out} from '../utils/authLocalForage.js'
 
 
 const Navbar = () => {
 	const isActiveStyle = {opacity: '1'}
+	const navigate = useNavigate()
 
 	const {auth, setAuth} = useContext(Context)
 
 	const handleOut  = () => {
 		out()
 		setAuth(!auth)
+		novugate('/')
 	}
 
 	return (

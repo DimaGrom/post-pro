@@ -15,7 +15,7 @@ const Navbar = () => {
 	const handleOut  = () => {
 		out()
 		setAuth(!auth)
-		novugate('/')
+		navigate('/')
 	}
 
 	return (

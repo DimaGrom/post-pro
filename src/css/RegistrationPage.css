@@ -33,6 +33,16 @@
 	margin: 10px 20px;
 }
 
+.RegistrationPage  label span {
+    color: white;
+    display: flex;
+    justify-content: space-between;
+}
+
+.RegistrationPage  label span .red {
+    color: red;
+}
+
 .RegistrationPage  input {
 	color: white;
     border: solid white 1px;

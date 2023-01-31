@@ -22,7 +22,7 @@ const LoginPage  = () => {
 		loginUser(username, password, setAuth, setStatuse)
 	}
 
-	console.log('LoginPage statuse ', statuse)
+	// console.log('LoginPage statuse ', statuse)
 
 	const handleName = (e) => {
 		setUsername(e.target.value)

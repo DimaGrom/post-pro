@@ -20,13 +20,10 @@ const PostItem = ({post, auth}) => {
 		)
 	}
 
-	// console.log('post PostItem ', post)
-	// console.log('post, auth PostItem ', post.author, auth)
-
 	return (
 		<div className='PostItem'>
 
-		
+
 
 				<div className='flext'>
 					<div className={post.image ? 'image' : 'notimage'}>
@@ -35,8 +32,7 @@ const PostItem = ({post, auth}) => {
 								<div 
 									className='image'
 									style={{
-									background: `url(${URL.createObjectURL(post.image)}) 50%/cover no-repeat`, 
-									backgroundSize: 'cove'}}	
+									background: `url(${URL.createObjectURL(post.image)}) 50%/cover no-repeat`}}	
 								>
 								</div>
 						 )

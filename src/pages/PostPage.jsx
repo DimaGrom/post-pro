@@ -43,8 +43,7 @@ const PostPage = () => {
 							<div 
 								className='image'
 								style={{
-								background: `url(${URL.createObjectURL(post.image)}) 50%/cover no-repeat`, 
-								backgroundSize: 'cove'}}	
+								background: `url(${URL.createObjectURL(post.image)}) 50%/cover no-repeat`}}	
 							>
 							</div>
 					 )

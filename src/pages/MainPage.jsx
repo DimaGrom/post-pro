@@ -11,11 +11,11 @@ import {Context} from '../utils/Context.js'
 const MainPage = () => {
 	const navigate = useNavigate()
 	const [posts, setPosts] = useState([])
-	const {auth} = useContext(Context)
+	const {auth, check} = useContext(Context)
 
 	useEffect(() => {
 		getAllPosts(setPosts)
-	}, [])
+	}, [check])
 
 	const handleCreatePost = () => {
 		navigate('/new')

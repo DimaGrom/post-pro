@@ -3,7 +3,7 @@ import uniqid from 'uniqid'
 
 
 
-export const registerUser = (username, password, set) => {
+export const registerUser = (username, password, set, status) => {
 	if(username === '' && password === '') {
 		return console.log('Имя и пароль должны быть заполнены.')
 	}
@@ -12,8 +12,8 @@ export const registerUser = (username, password, set) => {
 			if(data) {
 				const check = data.find(f => f.userName === username)
 				if(check) {
-					console.log('data ', data)
-					return console.log('Данное имя уже существует. Поробуйте новое имя.')
+					console.log('Данное имя уже существует. Поробуйте новое имя.')
+					return status('404') 
 				} else {
 					const newUser = {}
 					newUser.userName = username

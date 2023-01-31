@@ -10,8 +10,7 @@ export const getAllPosts = (set) => {
 		})
 }
 
-export const createPost = (post) => {
-	// console.log('post createPost ', post)
+export const createPost = (post, a, set) => {
 	localforage.getItem('post')
 	.then(data => {
 		if(data) {
@@ -25,8 +24,6 @@ export const createPost = (post) => {
 					.then(users => {
 						if(users) {
 							const user = users.find(f => f.id === post.author)
-							console.log('createPost user', user)
-							post.authName = user.userName
 						}
 					})
 					.then(() => {
@@ -36,6 +33,7 @@ export const createPost = (post) => {
 						post.datecreate = Date.now()
 						post.datedate = new Date()
 						localforage.setItem('post', [...data, post])
+						set(!a)
 					})
 		} else {
 			localforage.getItem('token')

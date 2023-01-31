@@ -14,6 +14,7 @@ const RegistrationPage  = () => {
 	const navigate = useNavigate()
 	const [username, setUsername] = useState('')
 	const [password, setPassword] = useState('')
+	const [statuse, setStatuse] = useState('')
 	const {auth, setAuth} = useContext(Context)
 
 	useEffect(() => {
@@ -23,7 +24,12 @@ const RegistrationPage  = () => {
 	}, [auth])
 
 	const handleSubmit = () => {
-			registerUser(username, password, setAuth)	
+			registerUser(username, password, setAuth, setStatuse)	
+	}
+
+	const handleName = (e) => {
+		setUsername(e.target.value)
+		setStatuse('')
 	}
 
 	const handleRemoveLocal = () => {
@@ -36,12 +42,19 @@ const RegistrationPage  = () => {
 			<h1>Регистрация</h1>
 			<form onSubmit={e => e.preventDefault()}>
 				<label>
-					Имя:
+					<span>
+						<span>Имя:</span> 
+							{
+								statuse === '404' && (
+									<span className='red'>Выберите другое имя</span>
+								)
+							}	
+					</span>
 					<input 
 						type='text'
 						placeholder='Username'
 						value={username}
-						onChange={e => setUsername(e.target.value)}
+						onChange={e => {handleName(e)}}
 					/>
 				</label>
 				<label>

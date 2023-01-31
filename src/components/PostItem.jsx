@@ -12,6 +12,8 @@ import {NavLink} from 'react-router-dom'
 const PostItem = ({post, auth}) => {
   const {token} = useContext(Context)
 
+  console.log('post ', post)
+
 	if(!post) {
 		return (
 			<div className='PostItem'>
@@ -22,8 +24,6 @@ const PostItem = ({post, auth}) => {
 
 	return (
 		<div className='PostItem'>
-
-
 
 				<div className='flext'>
 					<div className={post.image ? 'image' : 'notimage'}>

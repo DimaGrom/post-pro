@@ -24,6 +24,7 @@ export const createPost = (post, a, set) => {
 					.then(users => {
 						if(users) {
 							const user = users.find(f => f.id === post.author)
+							post.authName = user.userName
 						}
 					})
 					.then(() => {

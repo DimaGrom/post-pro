@@ -62,3 +62,18 @@ export const createPost = (post) => {
 		}			
 	})
 }
+
+export const getPostById = (id, set) => {
+	localforage.getItem('post')
+		.then(posts => {
+			if(posts) {
+				const postsWithoutPost = posts.filter(f => f.id !== id)
+				console.log('postsWithoutPost ', postsWithoutPost)
+				const post = posts.find(f => f.id === id)
+				console.log('post ', post)
+				post.views += 1
+				localforage.setItem('post', [...postsWithoutPost, post])
+				set(post)
+			}
+		})
+}

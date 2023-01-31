@@ -26,62 +26,65 @@ const PostItem = ({post, auth}) => {
 	return (
 		<div className='PostItem'>
 
-			<div className='flext'>
-				<div className={post.image ? 'image' : 'notimage'}>
-					{
-						post.image && (
-							<img
-								src={URL.createObjectURL(post.image)}
-								alt='Картинк'
-							/>
-						)
-					}
-				</div>
-			</div>
+		
 
-			<div className='name'>
-				<div>
-					{post.authName}
-				</div>
-				<Moment 
-				date={post.datedate} 
-				format='DD MM YYYY' 
-				className='PostItem__date'
-			/>
-			</div>
-
-			<div className='title'>{post.title}</div>
-			<div className='text line-clamp-3'>{post.text}</div>
-
-			<div className='PostItem_icons'>
-				<div className='PostItem_icons__pablic'>
-					<div>
-						<NavLink to={`/${post.id}`}>
-							<img src={viewsImg} alt='Просмотров' />
-							<span>{post.views}</span>
-						</NavLink>
-					</div>
-					<div>
-						<img src={commentImg} alt='Комментарии' />
-						<span>{post.comments}</span>
+				<div className='flext'>
+					<div className={post.image ? 'image' : 'notimage'}>
+						{
+						 post.image && (
+								<div 
+									className='image'
+									style={{
+									background: `url(${URL.createObjectURL(post.image)}) 50%/cover no-repeat`, 
+									backgroundSize: 'cove'}}	
+								>
+								</div>
+						 )
+						}
 					</div>
 				</div>
 
-				{
-					post.author === token && (
-						<div className='PostItem_icons__pablic edit'>
-							<div>
-								<img src={editImg} alt='Просмотров' />
-							</div>
-							<div>
-								<img src={deleteImg} alt='Комментарии' />
-							</div>
+				<div className='name'>
+					<div>
+						{post.authName}
+					</div>
+					<Moment 
+					date={post.datedate} 
+					format='DD MM YYYY' 
+					className='PostItem__date'
+				/>
+				</div>
+
+				<div className='title'>{post.title}</div>
+				<div className='text line-clamp-3'>{post.text}</div>
+
+				<div className='PostItem_icons'>
+					<div className='PostItem_icons__pablic'>
+						<div>
+							<NavLink to={`/${post.id}`}>
+								<img src={viewsImg} alt='Просмотров' />
+								<span>{post.views}</span>
+							</NavLink>
 						</div>
-					)
-				}
+						<div>
+							<img src={commentImg} alt='Комментарии' />
+							<span>{post.comments}</span>
+						</div>
+					</div>
 
-						
-			</div>
+					{
+						post.author === token && (
+							<div className='PostItem_icons__pablic edit'>
+								<div>
+									<img src={editImg} alt='Просмотров' />
+								</div>
+								<div>
+									<img src={deleteImg} alt='Комментарии' />
+								</div>
+							</div>
+						)
+					}			
+				</div>
 
 		</div>
 	)

@@ -1,60 +1,81 @@
-.PostItem {
+.PostPage {
 	margin-bottom: 20px;
-	border-bottom: solid #374151 1px;
+	/*border-bottom: solid #374151 1px;*/
 	padding-bottom: 12px;
+	display: flex;
+	justify-content: space-between;
 }
 
-.PostItem .flex {
+.PostPage .contentext {
+	width: 80%;
+}
+
+.PostPage .popula {
+	width: 15%;
+}
+
+@media (max-width: 700px) {
+	.PostPage .contentext {
+		width: 88%;
+	}
+
+	.PostPage .popula {
+		width: 10%;
+	}
+}
+
+.PostPage .flex {
 	display: flex;
 }
 
-.PostItem .image {
+.PostPage .image {
 	flex: 0 1 100%;
-	height: 50vh;
+	height: 70vh;
 	overflow: hidden;
+	
 }
 
-.PostItem .notimage {
+.PostPage .notimage {
 	flex: 0 1 100%;
 	height: 0;
 	overflow: hidden;
 }
 
 @media (max-width: 700px) {
-	.PostItem .image {
-		height: 35vh;
+	.PostPage .image {
+		height: 50vh;
 	}
 }
 
-.PostItem .image img{
+.PostPage .image img{
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
 }
 
-.PostItem .PostItem__auth {
+.PostPage .PostPage__auth {
 	display: flex;
     margin: 10px 0;
     justify-content: space-between;
 }
 
-.PostItem .name {
+.PostPage .name {
 	display: flex;
     margin: 10px 0;
     justify-content: space-between;
 }
 
-.PostItem .name div {
+.PostPage .name div {
     font-size: 10px;
     opacity: 0.5;
 }
 
-.PostItem .name .date {
+.PostPage .name .date {
     font-size: 8px;
     opacity: 0.5;
 }
 
-.PostItem .text {
+.PostPage .text {
 	opacity: 0.6;
 	font-size: 12px;
 }
@@ -68,45 +89,45 @@
   padding-bottom: 4px;
 }
 
-.PostItem_icons {
+.PostPage_icons {
 	display: flex;
 	justify-content: space-between;
 }
 
-.PostItem_icons__pablic {
+.PostPage_icons__pablic {
 	display: flex;
 	align-items: center;
 }
 
-.PostItem_icons__pablic a {
+.PostPage_icons__pablic a {
 	display: flex;
 	align-items: center;
 }
 
-.PostItem_icons__pablic div {
+.PostPage_icons__pablic div {
 	display: flex;
 	align-items: center;
 	cursor: pointer;
 	margin: 0 15px 0 0;
 }
 
-.PostItem_icons__pablic div img {
+.PostPage_icons__pablic div img {
 	background: white;
 	width: 10px;
 	height: 10px;
 }
 
-.PostItem_icons__pablic div span {
+.PostPage_icons__pablic div span {
 	color: white;
 	font-size: 14px;
 	margin: 0 5px 0px 10px;
 }
 
-.PostItem .PostItem__date {
+.PostPage .PostItem__date {
 	font-size: 10px;
 	opacity: 0.6;
 }
 
-.PostItem_icons__pablic.edit div {
+.PostPage_icons__pablic.edit div {
 	margin: 0 0 0 15px;
 }

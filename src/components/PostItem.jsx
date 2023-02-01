@@ -8,11 +8,10 @@ import editImg from '../icons/edit_02.png'
 import deleteImg from '../icons/delete_01.png'
 import {Context} from '../utils/Context.js'
 import {NavLink} from 'react-router-dom'
+import {deletePost} from '../utils/postLocalForage.js'
 
 const PostItem = ({post, auth}) => {
-  const {token} = useContext(Context)
-
-  console.log('post ', post)
+  const {token, check, setCheck} = useContext(Context)
 
 	if(!post) {
 		return (
@@ -20,6 +19,10 @@ const PostItem = ({post, auth}) => {
 				<h1>Постов нет</h1>
 			</div>
 		)
+	}
+
+	const handleDeletePost = () => {
+		deletePost(post.id, check, setCheck)
 	}
 
 	return (
@@ -74,7 +77,7 @@ const PostItem = ({post, auth}) => {
 								<div>
 									<img src={editImg} alt='Просмотров' />
 								</div>
-								<div>
+								<div onClick={handleDeletePost}>
 									<img src={deleteImg} alt='Комментарии' />
 								</div>
 							</div>

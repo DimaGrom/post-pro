@@ -7,22 +7,23 @@ import commentImg from '../icons/comment_01.png'
 import editImg from '../icons/edit_02.png'
 import deleteImg from '../icons/delete_01.png'
 import {Context} from '../utils/Context.js'
-import {NavLink} from 'react-router-dom'
+import {NavLink, useNavigate} from 'react-router-dom'
 import {useParams} from 'react-router-dom' 
-import {getPostById} from '../utils/postLocalForage.js'
+import {getPostById, deletePost} from '../utils/postLocalForage.js'
 
 
 
 const PostPage = () => {
 	const params = useParams()
+	const navigate = useNavigate()
 	const [post, setPost] = useState('')
-	const {token} = useContext(Context)
+	const {token, check, setCheck} = useContext(Context)
 
 	useEffect(() => {
 		getPostById(params.id, setPost)
 	}, [params.id])
 
-	console.log('PostPage post ', post)
+	// console.log('PostPage post ', post)
 
 	if(!post) {
 		return (
@@ -30,6 +31,11 @@ const PostPage = () => {
 				<h1>Постов нет</h1>
 			</div>
 		)
+	}
+
+	const handleDeletePost = () => {
+		deletePost(params.id, check, setCheck)
+		navigate('/')
 	}
 
 	return (
@@ -85,7 +91,7 @@ const PostPage = () => {
 								<div>
 									<img src={editImg} alt='Просмотров' />
 								</div>
-								<div>
+								<div onClick={handleDeletePost}>
 									<img src={deleteImg} alt='Комментарии' />
 								</div>
 							</div>

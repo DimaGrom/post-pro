@@ -10,6 +10,16 @@ export const getAllPosts = (set) => {
 		})
 }
 
+export const popularPosts = (set) => {
+	localforage.getItem('post')
+		.then(data => {
+			if(data) {
+				return set(data.sort((a, b) => +b.views - +a.views).slice(0, 5) || [])
+			}
+				
+		})
+}
+
 export const createPost = (post, a, set) => {
 	localforage.getItem('post')
 	.then(data => {
@@ -67,12 +77,22 @@ export const getPostById = (id, set) => {
 		.then(posts => {
 			if(posts) {
 				const postsWithoutPost = posts.filter(f => f.id !== id)
-				console.log('postsWithoutPost ', postsWithoutPost)
+				// console.log('postsWithoutPost ', postsWithoutPost)
 				const post = posts.find(f => f.id === id)
 				console.log('post ', post)
 				post.views += 1
 				localforage.setItem('post', [...postsWithoutPost, post])
 				set(post)
 			}
+		})
+}
+
+export const deletePost = (id, a, set) => {
+	localforage.getItem('post') 
+		.then(posts => {
+			const newPosts = posts.filter(f => f.id !== id)
+			localforage.setItem('post', newPosts)
+			set(!a)
+			console.log('Пост удалён')
 		})
 }

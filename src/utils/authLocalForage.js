@@ -51,7 +51,7 @@ export const loginUser = (username, password, set, status) => {
 			if(data) {
 				const check = data.find(f => f.userName === username && f.password === password)
 				if(check) {
-					console.log('data ', data)
+					// console.log('data ', data)
 					set(true)
 					localforage.setItem('token', check.id)
 				} else {

@@ -33,7 +33,7 @@ const AddpostPage  = () => {
 
 	return (
 		<div className='AddpostPage'>
-			<h1>Добавить пост</h1>
+			{/*<h1>Добавить пост</h1>*/}
 			<form  
 				onSubmit={e => e.preventDefault()}
 			>	

@@ -2,6 +2,7 @@
 	margin-top: 20px;
 	display: flex;
 	justify-content: space-between;
+
 }
 
 @media (max-width: 500px) {
@@ -52,12 +53,30 @@
 	width: 65%;
 }
 
+
 @media (max-width: 740px) {
 	.MainPage .posts {
-		width: 100%;
+		width: 85%;
 	}
 }
 
-.MainPage .popularposts {
+.MainPage .popular {
 	width: 30%;
+}
+
+@media (max-width: 740px) {
+	.MainPage .popular {
+		width: 10%;
+	}
+}
+
+.MainPage h3 {
+	color: white;
+	padding-top: 8px;
+}
+
+@media (max-width: 740px) {
+	.MainPage h3 {
+		display: none;
+	}
 }

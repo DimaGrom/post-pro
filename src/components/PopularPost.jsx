@@ -20,9 +20,12 @@ const PopularPost = ({post}) => {
 		<div className='PopularPost'>
 			
 			<NavLink to={`/${post.id}`}>
+
 				<div className='content'>
+
 					{
-						post.image && (
+						post.image 
+							? (
 								<div 
 									className='image'
 									style={{
@@ -31,16 +34,18 @@ const PopularPost = ({post}) => {
 									}}
 								>
 								</div>
-							) 
+							) : (
+								<div className='image'>	</div>
+							)
 					}
 
-					<div className='text'>{post.text}</div>
+					<div className='star'>
+						<img src={popularImg} alt='star' />
+					</div>
 					
 				</div>
 
-				<div className='star'>
-					<img src={popularImg} alt='star' />
-				</div>
+				
 			</NavLink>
 		</div>
 	)

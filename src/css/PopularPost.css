@@ -1,9 +1,14 @@
 .PopularPost {
-	margin-top: 10px;
-	position: relative;
+	/*margin-top: 10px;
+*/	position: relative;
 	margin-bottom: 20px;
-	border-bottom: solid #374151 1px;
 	padding-bottom: 10px;
+}
+
+@media (max-width: 740px) {
+	.PopularPost {
+		margin-bottom: 20px;
+	}
 }
 
 @media (max-width: 740px) {
@@ -15,12 +20,14 @@
 .PopularPost .content {
 	display: flex;
 	justify-content: space-between;
-	/*padding-bottom: 10px;*/
+	position: relative;
 }
 
 .PopularPost .image{
 	width: 50%;
 	height: 100px;
+	border-radius: 50%;
+	background: gray;
 }
 
 @media (max-width: 740px)  {
@@ -29,27 +36,18 @@
 	}
 }
 
-.PopularPost .text {
-	font-size: 8px;
-	color: white;
-	opacity: 0.6;
-	width: 45%;
-}
-
-@media (max-width: 740px)  {
-	.PopularPost .text {
-		display: none;
-	}
-}
 
 .PopularPost .star {
-	display: none;
+	position: absolute;
+	left: 0;
+	bottom: 0;
 }
 
 @media (max-width: 740px)  {
 	.PopularPost .star {
 		display: inline-block;
-	    width: 20px;
+		position: relative;
+	    /*width: 20px;*/
 	}
 
 	.PopularPost .notImage {
@@ -57,8 +55,12 @@
 	}
 }
 
+@media (max-width: 460px)  {
+	.PopularPost .star {
+	    width: 20px;
+	}
 
-.PopularPost {}
-.PopularPost {}
-.PopularPost {}
-.PopularPost {}
+	.PopularPost .notImage {
+		display: none;
+	}
+}

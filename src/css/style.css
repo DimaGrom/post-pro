@@ -84,7 +84,7 @@ legend {
 @media (max-width: 550px) {
 	.container {
 		max-width: 500px;
-		min-width: 350px;
+		min-width: 250px;
 		padding: 0 10px;
 	}
 }

@@ -102,9 +102,9 @@ const PostPage = () => {
 
 			</div>
 
-			<div className='popula'>
+			{/*<div className='popula'>
 				POPUL
-			</div>
+			</div>*/}
 
 		</div>
 	)

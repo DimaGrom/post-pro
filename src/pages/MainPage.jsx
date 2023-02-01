@@ -5,6 +5,8 @@ import {useNavigate} from 'react-router-dom'
 import {getAllPosts, popularPosts} from '../utils/postLocalForage.js'
 import PostItem from '../components/PostItem.jsx'
 import PopularPost from '../components/PopularPost'
+import popularImg from '../icons/popular_04.png'
+import loveImg from '../icons/like_01.png'
 import {Context} from '../utils/Context.js'
 
 
@@ -13,7 +15,11 @@ const MainPage = () => {
 	
 	const [posts, setPosts] = useState([])
 	const [populat, setPopular] = useState([])
+	const [live, setLove] = useState(null)
 	const {auth, check} = useContext(Context)
+	const [color, setColor] = useState(true)
+
+	const colorWiteAction = {border: 'solid white 2px'}
 
 	// console.log(populat)
 
@@ -53,9 +59,15 @@ const MainPage = () => {
 			</div> 
 
 			<div className="popular">
-				<h3>Популярные</h3>
+				<div className='popular__icon'>
+					<img onClick={() => setColor(!color)} style={color ? colorWiteAction : undefined } src={popularImg} alt='Популярные' />
+					<img onClick={() => setColor(!color)} style={color ? undefined : colorWiteAction} src={loveImg} alt='Любимые' />
+				</div>
 				{
-					populat && populat.map((m, k) => <PopularPost key={k} post={m} />)
+					(populat && color) && populat.map((m, k) => <PopularPost key={k} post={m} />)
+				}
+				{
+					(live && color) && <div>LIKE</div>
 				}
 			</div>
 

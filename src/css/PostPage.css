@@ -24,6 +24,17 @@
 	}
 }
 
+.PostPage .wrapper {
+	position: relative;
+}
+
+.PostPage .like {
+    position: absolute;
+    right: 0;
+    bottom: 0px;
+    cursor: pointer;
+}
+
 .PostPage .flex {
 	display: flex;
 }
@@ -37,8 +48,9 @@
 
 .PostPage .notimage {
 	flex: 0 1 100%;
-	height: 0;
+	height: 2px;
 	overflow: hidden;
+	background: white;
 }
 
 @media (max-width: 700px) {
@@ -47,10 +59,15 @@
 	}
 }
 
-.PostPage .image img{
+.PostPage .image img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
+}
+
+.PostPage .like img {
+	background: white;
+	width: 20px;
 }
 
 .PostPage .PostPage__auth {

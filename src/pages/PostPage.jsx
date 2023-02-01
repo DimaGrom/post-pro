@@ -6,6 +6,7 @@ import viewsImg from '../icons/eye_01.png'
 import commentImg from '../icons/comment_01.png'
 import editImg from '../icons/edit_02.png'
 import deleteImg from '../icons/delete_01.png'
+import like from '../icons/heart_01.png'
 import {Context} from '../utils/Context.js'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {useParams} from 'react-router-dom' 
@@ -43,18 +44,27 @@ const PostPage = () => {
 
 			<div className='contentext'>
 
-				<div className='flext'>
-				{
-					 post.image && (
-							<div 
-								className='image'
-								style={{
-								background: `url(${URL.createObjectURL(post.image)}) 50%/cover no-repeat`}}	
-							>
-							</div>
-					 )
-				}				
-					
+				<div className="wrapper">
+					<div className={post.image ? 'flex' : 'notimage'} >
+						{
+							 post.image && (
+									<div 
+										className='image'
+										style={{
+										background: `url(${URL.createObjectURL(post.image)}) 50%/cover no-repeat`}}	
+									>
+									</div>
+							 )
+						}						
+					</div>
+					<div className='like'>
+						{
+							<img
+								src={like}
+								alte='Like'
+							/>
+						}
+					</div>
 				</div>
 
 				<div className='name'>

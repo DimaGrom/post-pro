@@ -17,7 +17,8 @@ const MainPage = () => {
 	const [populat, setPopular] = useState([])
 	const [live, setLove] = useState(null)
 	const {auth, check} = useContext(Context)
-	const [color, setColor] = useState(true)
+	const [colorPopul, setColorPopula] = useState(true)
+	const [colorLike, setColorLike] = useState(false)
 
 	const colorWiteAction = {border: 'solid white 2px'}
 
@@ -30,6 +31,16 @@ const MainPage = () => {
 
 	const handleCreatePost = () => {
 		navigate('/new')
+	}
+
+	const handleLicke = () => {
+		setColorLike(true)
+		setColorPopula(false)
+	}
+
+	const handlePopul = () => {
+		setColorPopula(true)
+		setColorLike(false)
 	}
 
 	if(!posts.length) {
@@ -60,14 +71,27 @@ const MainPage = () => {
 
 			<div className="popular">
 				<div className='popular__icon'>
-					<img onClick={() => setColor(!color)} style={color ? colorWiteAction : undefined } src={popularImg} alt='Популярные' />
-					<img onClick={() => setColor(!color)} style={color ? undefined : colorWiteAction} src={loveImg} alt='Любимые' />
+
+					<img
+						 onClick={handlePopul} 
+						 style={colorPopul ? colorWiteAction : undefined } 
+						 src={popularImg} 
+						 alt='Популярные' 
+					 />
+
+					<img 
+						onClick={handleLicke} 
+						style={colorLike ? colorWiteAction : undefined } 
+						src={loveImg} 
+						alt='Любимые' 
+					/>
+
 				</div>
 				{
-					(populat && color) && populat.map((m, k) => <PopularPost key={k} post={m} />)
+					(populat && colorPopul) && populat.map((m, k) => <PopularPost key={k} post={m} />)
 				}
 				{
-					(live && color) && <div>LIKE</div>
+					(live && colorLike) && <div>LIKE</div>
 				}
 			</div>
 

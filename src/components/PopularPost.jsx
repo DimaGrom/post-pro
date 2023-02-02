@@ -14,7 +14,7 @@ const PopularPost = ({post}) => {
 		)
 	}
 
-	console.log(post.image)
+	// console.log(post.image)
 
 	return (
 		<div className='PopularPost'>

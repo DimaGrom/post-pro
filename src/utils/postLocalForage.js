@@ -39,6 +39,7 @@ export const createPost = (post, a, set) => {
 					})
 					.then(() => {
 						post.id = uniqid()
+						post.like = []
 						post.views = 0
 						post.comments = 0
 						post.datecreate = Date.now()
@@ -62,6 +63,7 @@ export const createPost = (post, a, set) => {
 					})
 					.then(() => {
 						post.id = uniqid()
+						post.like = []
 						post.views = 0
 						post.comments = 0
 						post.datecreate = Date.now()
@@ -73,7 +75,7 @@ export const createPost = (post, a, set) => {
 	})
 }
 
-export const getPostById = (id, set) => {
+export const getPostById = (id, set, token) => {
 	localforage.getItem('post')
 		.then(posts => {
 			if(posts) {
@@ -83,7 +85,15 @@ export const getPostById = (id, set) => {
 				// console.log('post ', post)
 				post.views += 1
 				localforage.setItem('post', [...postsWithoutPost, post])
-				set(post)
+				const check = post.like.indexOf(token)
+				if(check === -1) {
+					return set(post)
+				} else {
+					post.nowLike = post.like[check]
+					// console.log('getPostById post', post)
+					return set(post)
+				}
+				// set(post)
 			}
 		})
 }
@@ -96,4 +106,42 @@ export const deletePost = (id, a, set) => {
 			set(!a)
 			console.log('Пост удалён')
 		})
+}
+
+// Лайкаем изрбранные посты
+export const setLike = (id, token, a, set) => {
+	localforage.getItem('post')
+		.then(posts => {
+			const post = posts.find(f => f.id === id)
+			const newPosts = posts.filter(f => f.id !== id)
+			const check = post.like.find(f => f.authLike === token)
+			if(check) {
+				post.like = post.like.filter(f => f.authLike !== token)
+				post.nowlike = ''
+				localforage.setItem('post', [...newPosts, post])
+				set(!a)
+			} else {
+				post.nowlike = token
+				post.like = [...post.like, {authLike: token}]
+				localforage.setItem('post', [...newPosts, post])
+				set(!a)
+			}		
+		})
+		.then(() => {
+			localforage.getItem('users')
+				.then(users => {
+					const user = users.find(f => f.id === token)
+					const check = user.likePost.find(f => f.postName === id)
+					if(check) {
+						user.likePost = user.likePost.filter(f => f.postName !== id)
+						const newUsers = users.filter(f => f.id !== token)
+						localforage.setItem('users', [...newUsers, user])
+					} else {
+						user.likePost = [...user.likePost, {postName: id}]
+						const newUsers = users.filter(f => f.id !== token)
+						localforage.setItem('users', [...newUsers, user])
+					}
+				})
+		})
+	
 }

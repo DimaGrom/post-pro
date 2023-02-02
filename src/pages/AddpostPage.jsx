@@ -74,10 +74,8 @@ const AddpostPage  = () => {
 				<div className='button_sibmit'>
 
 					<button onClick={handleCreatePost} className='submit'>Добавить</button>
-					
-					<button onClick={handleSubmitTest} className='submit'>Тест</button>
 
-					<button onClick={handleSubmitremove} className='submit'>Очистить</button>
+					
 
 					<button onClick={() => navigate('/')} className='submit'>Отмена</button>
 				</div>

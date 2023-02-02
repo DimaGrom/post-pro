@@ -1,4 +1,4 @@
-import react, {useState, useContext} from 'react'
+import React, {useContext} from 'react'
 import '../css/style.css'
 import '../css/Navbar.css'
 import {NavLink, useNavigate} from 'react-router-dom'

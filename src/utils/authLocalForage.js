@@ -16,6 +16,7 @@ export const registerUser = (username, password, set, status) => {
 					return status('404') 
 				} else {
 					const newUser = {}
+					newUser.likePost = []
 					newUser.userName = username
 					newUser.password = password
 					newUser.id = uniqid()
@@ -28,6 +29,7 @@ export const registerUser = (username, password, set, status) => {
 				}
 			} else {
 				const newUser = {}
+				newUser.likePost = []
 				newUser.userName = username
 				newUser.password = password
 				newUser.id = uniqid()

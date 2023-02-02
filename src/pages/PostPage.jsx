@@ -6,11 +6,12 @@ import viewsImg from '../icons/eye_01.png'
 import commentImg from '../icons/comment_01.png'
 import editImg from '../icons/edit_02.png'
 import deleteImg from '../icons/delete_01.png'
-import like from '../icons/heart_01.png'
+import likeImg from '../icons/heart_01.png'
+import likeActiveImg from '../icons/heart_02.png'
 import {Context} from '../utils/Context.js'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {useParams} from 'react-router-dom' 
-import {getPostById, deletePost} from '../utils/postLocalForage.js'
+import {getPostById, deletePost, setLike} from '../utils/postLocalForage.js'
 
 
 
@@ -19,12 +20,12 @@ const PostPage = () => {
 	const navigate = useNavigate()
 	const [post, setPost] = useState('')
 	const {token, check, setCheck} = useContext(Context)
+	const [switchLike, setSwitchLick] = useState(true)
 
 	useEffect(() => {
-		getPostById(params.id, setPost)
-	}, [params.id])
+		getPostById(params.id, setPost, token)
+	}, [params.id, switchLike, token])
 
-	// console.log('PostPage post ', post)
 
 	if(!post) {
 		return (
@@ -32,6 +33,12 @@ const PostPage = () => {
 				<h1>Постов нет</h1>
 			</div>
 		)
+	} else {
+		console.log('post ', post)
+	}
+
+	const handleLove = async () => {
+		setLike(params.id, token, switchLike, setSwitchLick)
 	}
 
 	const handleDeletePost = () => {
@@ -57,13 +64,26 @@ const PostPage = () => {
 							 )
 						}						
 					</div>
-					<div className='like'>
-						{
-							<img
-								src={like}
-								alte='Like'
-							/>
+					<div
+					 className='like'
+					 onClick={handleLove}
+					>
+						{	
+							post.nowlike 
+								? (
+									<img
+										src={likeActiveImg}
+										alt='Like'
+									/>
+								) : (
+									<img
+										src={likeImg}
+										alt='Like'
+									/>
+								)
+								
 						}
+
 					</div>
 				</div>
 

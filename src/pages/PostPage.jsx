@@ -8,10 +8,14 @@ import editImg from '../icons/edit_02.png'
 import deleteImg from '../icons/delete_01.png'
 import likeImg from '../icons/heart_01.png'
 import likeActiveImg from '../icons/heart_02.png'
+import popularImg from '../icons/popular_04.png'
+import loveImg from '../icons/like_01.png'
 import {Context} from '../utils/Context.js'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {useParams} from 'react-router-dom' 
-import {getPostById, deletePost, setLike} from '../utils/postLocalForage.js'
+import {getPostById, deletePost, setLike, popularPosts, likePosts} from '../utils/postLocalForage.js'
+import PopularPost from '../components/PopularPost'
+import LikePost from '../components/LikePost.jsx'
 
 
 
@@ -19,11 +23,19 @@ const PostPage = () => {
 	const params = useParams()
 	const navigate = useNavigate()
 	const [post, setPost] = useState('')
+	const [populat, setPopular] = useState([])
+	const [likepost, setLikePost] = useState([])
 	const {token, check, setCheck} = useContext(Context)
 	const [switchLike, setSwitchLick] = useState(true)
+	const [colorPopul, setColorPopula] = useState(true)
+	const [colorLike, setColorLike] = useState(false)
+
+	const colorWiteAction = {border: 'solid white 2px'}
 
 	useEffect(() => {
 		getPostById(params.id, setPost, token)
+		popularPosts(setPopular)
+		likePosts(setLikePost)
 	}, [params.id, switchLike, token])
 
 
@@ -44,6 +56,16 @@ const PostPage = () => {
 	const handleDeletePost = () => {
 		deletePost(params.id, check, setCheck)
 		navigate('/')
+	}
+
+	const handleLicke = () => {
+		setColorLike(true)
+		setColorPopula(false)
+	}
+
+	const handlePopul = () => {
+		setColorPopula(true)
+		setColorLike(false)
 	}
 
 	return (
@@ -69,7 +91,7 @@ const PostPage = () => {
 					 onClick={handleLove}
 					>
 						{	
-							post.nowlike 
+							post.nowlike && token 
 								? (
 									<img
 										src={likeActiveImg}
@@ -132,9 +154,31 @@ const PostPage = () => {
 
 			</div>
 
-			{/*<div className='popula'>
-				POPUL
-			</div>*/}
+			<div className="popular">
+				<div className='popular__icon'>
+
+					<img
+						 onClick={handlePopul} 
+						 style={colorPopul ? colorWiteAction : undefined } 
+						 src={popularImg} 
+						 alt='Популярные' 
+					 />
+
+					<img 
+						onClick={handleLicke} 
+						style={colorLike ? colorWiteAction : undefined } 
+						src={loveImg} 
+						alt='Любимые' 
+					/>
+
+				</div>
+				{
+					(populat && colorPopul) && populat.map((m, k) => <PopularPost key={k} post={m} />)
+				}
+				{
+					(likepost && colorLike) && likepost.map((m, k) => <LikePost key={k} post={m} />)
+				}
+			</div>
 
 		</div>
 	)

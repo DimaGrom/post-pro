@@ -1,21 +1,22 @@
 import '../css/style.css'
-import '../css/PopularPost.css'
-import popularImg from '../icons/like_star.png'
+import '../css/LikePost.css'
+import popularImg from '../icons/popular_02.png'
+import heartImg from '../icons/like_heart.png'
 import {NavLink} from 'react-router-dom'
 
 
-const PopularPost = ({post}) => {
+const LikePost = ({post}) => {
 
 	if(!post) {
 		return (
-			<div className='PopularPost'>
+			<div className='LikePost'>
 				<h2>Постов нет</h2>
 			</div>
 		)
 	}
 
 	return (
-		<div className='PopularPost'>
+		<div className='LikePost'>
 			
 			<NavLink to={`/${post.id}`}>
 
@@ -38,7 +39,7 @@ const PopularPost = ({post}) => {
 					}
 
 					<div className='star'>
-						<img src={popularImg} alt='star' />
+						<img src={heartImg} alt='star' />
 					</div>
 					
 				</div>
@@ -49,4 +50,4 @@ const PopularPost = ({post}) => {
 	)
 }
 
-export default PopularPost
+export default LikePost

@@ -7,20 +7,22 @@
 }
 
 .PostPage .contentext {
-	width: 80%;
+	width: 74%;
 }
 
-.PostPage .popula {
-	width: 15%;
+.PostPage .popular {
+	width: 24%;
+	color: white;
+	margin-bottom: 20px;
 }
 
 @media (max-width: 700px) {
 	.PostPage .contentext {
-		width: 88%;
+		width: 90%;
 	}
 
-	.PostPage .popula {
-		width: 10%;
+	.PostPage .popular {
+		width: 7%;
 	}
 }
 
@@ -39,7 +41,7 @@
 	display: flex;
 }
 
-.PostPage .image {
+.PostPage .wrapper .image {
 	flex: 0 1 100%;
 	height: 70vh;
 	overflow: hidden;
@@ -54,12 +56,12 @@
 }
 
 @media (max-width: 700px) {
-	.PostPage .image {
+	.PostPage .wrapper .image {
 		height: 50vh;
 	}
 }
 
-.PostPage .image img {
+.PostPage .wrapper .image img {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
@@ -147,4 +149,45 @@
 
 .PostPage_icons__pablic.edit div {
 	margin: 0 0 0 15px;
+}
+
+
+.PostPage .popular__icon {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-bottom: 40px;
+}
+
+@media (max-width: 740px) {
+	.PostPage .popular__icon {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+.PostPage .popular__icon img {
+	display: inline-block;
+	cursor: pointer;
+	margin-right: 20px;
+    border-radius: 50%;
+    border: solid grey 2px;
+    transition: 0.4s;
+}
+
+.PostPage .popular__icon img:hover {
+	border: solid white 2px;
+}
+
+@media (max-width: 740px) {
+	.PostPage .popular__icon img {
+		margin-right: 10px;
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 670px) {
+	.PostPage .popular__icon img {
+		margin: 0 0 20px 0;
+	}
 }

@@ -20,6 +20,15 @@ export const popularPosts = (set) => {
 		})
 }
 
+export const likePosts = (set) => {
+	localforage.getItem('post')
+		.then(data => {
+			if(data) {
+				return  set(data.filter(f => f.nowlike !== ''))
+			}	
+		})
+}
+
 export const createPost = (post, a, set) => {
 	localforage.getItem('post')
 	.then(data => {

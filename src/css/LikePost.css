@@ -1,5 +1,5 @@
 
-.PopularPost {
+.LikePost {
 	/*margin-top: 10px;
 */	position: relative;
 	margin-bottom: 20px;
@@ -7,24 +7,24 @@
 }
 
 @media (max-width: 740px) {
-	.PopularPost {
+	.LikePost {
 		margin-bottom: 20px;
 	}
 }
 
 @media (max-width: 740px) {
-	.PopularPost {
+	.LikePost {
 		border-bottom: none;
 	}
 }
 
-.PopularPost .content {
+.LikePost .content {
 	display: flex;
 	justify-content: space-between;
 	position: relative;
 }
 
-.PopularPost .image{
+.LikePost .image{
 	width: 50%;
 	height: 100px;
 	border-radius: 50%;
@@ -32,36 +32,36 @@
 }
 
 @media (max-width: 740px)  {
-	.PopularPost .image {
+	.LikePost .image {
 		display: none;
 	}
 }
 
 
-.PopularPost .star {
+.LikePost .star {
 	position: absolute;
 	left: 0;
 	bottom: 0;
 }
 
 @media (max-width: 740px)  {
-	.PopularPost .star {
+	.LikePost .star {
 		display: inline-block;
 		position: relative;
 	    /*width: 20px;*/
 	}
 
-	.PopularPost .notImage {
+	.LikePost .notImage {
 		display: none;
 	}
 }
 
 @media (max-width: 460px)  {
-	.PopularPost .star {
+	.LikePost .star {
 	    width: 20px;
 	}
 
-	.PopularPost .notImage {
+	.LikePost .notImage {
 		display: none;
 	}
 }

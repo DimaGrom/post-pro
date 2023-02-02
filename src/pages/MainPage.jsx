@@ -2,9 +2,10 @@ import React, {useEffect, useState, useContext} from 'react'
 import '../css/style.css'
 import '../css/MainPage.css'
 import {useNavigate} from 'react-router-dom'
-import {getAllPosts, popularPosts} from '../utils/postLocalForage.js'
+import {getAllPosts, popularPosts, likePosts} from '../utils/postLocalForage.js'
 import PostItem from '../components/PostItem.jsx'
 import PopularPost from '../components/PopularPost'
+import LikePost from '../components/LikePost.jsx'
 import popularImg from '../icons/popular_04.png'
 import loveImg from '../icons/like_01.png'
 import {Context} from '../utils/Context.js'
@@ -15,18 +16,19 @@ const MainPage = () => {
 	
 	const [posts, setPosts] = useState([])
 	const [populat, setPopular] = useState([])
-	const [live, setLove] = useState(null)
+	const [likepost, setLikePost] = useState([])
 	const {auth, check} = useContext(Context)
 	const [colorPopul, setColorPopula] = useState(true)
 	const [colorLike, setColorLike] = useState(false)
 
 	const colorWiteAction = {border: 'solid white 2px'}
 
-	// console.log(populat)
+	console.log('likepost ', likepost)
 
 	useEffect(() => {
 		getAllPosts(setPosts)
 		popularPosts(setPopular)
+		likePosts(setLikePost)
 	}, [check])
 
 	const handleCreatePost = () => {
@@ -91,7 +93,7 @@ const MainPage = () => {
 					(populat && colorPopul) && populat.map((m, k) => <PopularPost key={k} post={m} />)
 				}
 				{
-					(live && colorLike) && <div>LIKE</div>
+					(likepost && colorLike) && likepost.map((m, k) => <LikePost key={k} post={m} />)
 				}
 			</div>
 

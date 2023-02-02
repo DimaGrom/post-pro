@@ -16,7 +16,7 @@ const LoginPage  = () => {
 		if(auth) {
 			navigate('/')
 		}
-	}, [auth])
+	}, [auth, navigate])
 
 	const handleSubmit = () => {
 		loginUser(username, password, setAuth, setStatuse)

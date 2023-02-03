@@ -154,3 +154,34 @@ export const setLike = (id, token, a, set) => {
 		})
 	
 }
+
+export const getPostForUpdat = (id, setImage, setTitle, setText) => {
+	localforage.getItem('post')
+		.then(posts => {
+			const post = posts.find(f => f.id === id)
+			setImage(post.image)
+			setTitle(post.title)
+			setText(post.text)
+			// console.log('getPostForUpdat ', post)
+		})
+}
+
+export const updatePost = (id, newPost, check, setCheck) => {
+	localforage.getItem('post')
+		.then(posts => {
+			const post = posts.find(f => f.id === id)
+			const newpost = posts.filter(f => f.id !== id)
+			if(newPost.imageNew) {
+				post.image = newPost.imageNew
+			} else if (newPost.image) {
+				post.image = newPost.image
+			} else {
+				post.image = ''
+			}
+			post.title = newPost.title
+			post.text = newPost.text
+			localforage.setItem('post', [...newpost, post])
+			setCheck(!check)
+		})
+	
+}

@@ -72,9 +72,7 @@ const RegistrationPage  = () => {
 				</div>
 			</form>
 
-			<button style={{color: 'white', margin: '20px 0'}} onClick={handleRemoveLocal}>
-				Удалить всех юзеров
-			</button>
+			
 
 		</div>
 	)

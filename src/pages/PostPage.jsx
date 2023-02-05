@@ -141,7 +141,9 @@ const PostPage = () => {
 						post.author === token && (
 							<div className='PostPage_icons__pablic edit'>
 								<div>
-									<img src={editImg} alt='Просмотров' />
+									<NavLink to={`/${post.id}/edit`}>
+										<img src={editImg} alt='Просмотров' />
+									</NavLink>
 								</div>
 								<div onClick={handleDeletePost}>
 									<img src={deleteImg} alt='Комментарии' />

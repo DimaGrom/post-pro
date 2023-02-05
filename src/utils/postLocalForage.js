@@ -1,6 +1,7 @@
 import localforage from "localforage"
 import uniqid from 'uniqid'
 
+
 export const getAllPosts = (set) => {
 	localforage.getItem('post')
 		.then(data => {
@@ -107,13 +108,34 @@ export const getPostById = (id, set, token) => {
 		})
 }
 
+// export const deletePost = (id, a, set) => {
+// 	localforage.getItem('post') 
+// 		.then(posts => {
+// 			const newPosts = posts.filter(f => f.id !== id)
+// 			localforage.setItem('post', newPosts)
+// 			set(!a)
+// 			console.log('Пост удалён')
+// 		})
+// }
+
 export const deletePost = (id, a, set) => {
+	const likeDelet = null
 	localforage.getItem('post') 
 		.then(posts => {
+			const post = posts.find(f => f.id === id)
+
+			likeDelet = post.authLike
+
 			const newPosts = posts.filter(f => f.id !== id)
 			localforage.setItem('post', newPosts)
 			set(!a)
 			console.log('Пост удалён')
+		})
+		.then(() => {
+			localforage.getItem('users')
+				.then(users => {
+					// const userLikeDelete = 
+				})
 		})
 }
 
@@ -182,6 +204,12 @@ export const updatePost = (id, newPost, check, setCheck) => {
 			post.text = newPost.text
 			localforage.setItem('post', [...newpost, post])
 			setCheck(!check)
-		})
+		})	
+}
+
+// Список избранных постов
+
+export const listLikeAllPosts = () => {
 	
+	console.log('listLikeAllPosts posts ')
 }

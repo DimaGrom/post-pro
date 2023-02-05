@@ -9,9 +9,11 @@ import deleteImg from '../icons/delete_01.png'
 import {Context} from '../utils/Context.js'
 import {NavLink} from 'react-router-dom'
 import {deletePost} from '../utils/postLocalForage.js'
+import {useParams} from 'react-router-dom'
 
 const PostItem = ({post, auth}) => {
   const {token, check, setCheck} = useContext(Context)
+  const params = useParams()
 
 	if(!post) {
 		return (
@@ -66,8 +68,10 @@ const PostItem = ({post, auth}) => {
 							</NavLink>
 						</div>
 						<div>
-							<img src={commentImg} alt='Комментарии' />
-							<span>{post.comments}</span>
+							<NavLink to={`/${post.id}/commit`}>
+								<img src={commentImg} alt='Комментарии' />
+								<span>{post.comments}</span>
+							</NavLink>
 						</div>
 					</div>
 

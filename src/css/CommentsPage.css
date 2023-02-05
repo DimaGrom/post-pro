@@ -1,0 +1,72 @@
+.CommentsPage {}
+
+.CommentsPage__wraper {
+	display: flex;
+	justify-content: space-between;
+}
+
+.CommentsPage__context {
+	width: 65%;
+	background: #334155;
+	height: 80vh;
+	border-radius: 10px;
+}
+
+.CommentsPage__create_text {
+	width: 30%;
+	/*background: #334155;*/
+	/*height: 80vh;*/
+}
+
+
+.CommentsPage__create_text h3 {
+	color: #d1d5db;
+	font-size: 16px;
+	background: #334155;
+	padding: 10px 0;
+}
+
+.CommentsPage__create_text form {
+	margin-top: 20px;
+}
+
+.CommentsPage__create_text textarea {
+    font-size: 16px;
+    color: white;
+    border: solid white 1px;
+    border-radius: 2px;
+    margin: 10px 0;
+    padding: 4px 6px;
+    size: none;
+}
+
+.CommentsPage__create_text label {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.CommentsPage__create_text textarea::placeholder {
+    font-size: 16px;
+    color: #d1d5db;
+    opacity: 0.8;
+}
+
+.CommentsPage__sibmit {
+    display: flex;
+    justify-content: space-between;
+}
+
+.CommentsPage__sibmit .submit {
+    color: white;
+    background: #6b7280;
+    padding: 5px 10px;
+    border-radius: 2px;
+    transform: 0.4s;
+}
+
+.CommentsPage__sibmit .submit:hover {
+    color: white;
+    background: #3f3f46;
+}

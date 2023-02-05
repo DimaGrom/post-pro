@@ -1,6 +1,5 @@
 import '../css/style.css'
 import '../css/LikePost.css'
-import popularImg from '../icons/popular_02.png'
 import heartImg from '../icons/like_heart.png'
 import {NavLink} from 'react-router-dom'
 

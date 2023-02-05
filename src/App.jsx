@@ -6,6 +6,7 @@ import LoginPage from './pages/LoginPage.jsx'
 import RegistrationPage from './pages/RegistraitionPage.jsx'
 import PostPage from './pages/PostPage.jsx'
 import EditPostPage from './pages/EditPostPage.jsx'
+import CommentsPage from './pages/CommentsPage.jsx'
 import {Routes, Route} from 'react-router-dom'
 import {Context} from './utils/Context.js'
 import {getMe} from './utils/authLocalForage.js'
@@ -41,6 +42,7 @@ const App = () => {
 					<Route path='/registration' element={<RegistrationPage />} />
 					<Route path="/:id" element={<PostPage />} />
 					<Route path="/:id/edit" element={<EditPostPage />} />
+					<Route path='/:id/commit' element={<CommentsPage />} />
 				</Routes>
 			</Layout>
 		</Context.Provider>

@@ -1,0 +1,40 @@
+
+.CommentsItem {
+	width: 100%;
+	display: flex;
+	box-sizing: border-box;
+}
+
+.CommentsItem.right {
+	justify-content: flex-end;
+}
+
+.CommentsItem__wrappe {
+	width: 80%;
+	margin: 5px;
+    padding: 5px 7px;
+    display: flex;
+    flex-direction: column;
+}
+
+.CommentsItem__wrappe.right {
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+
+.CommentsItem__name p {
+	color: white;
+	font-size: 10px;
+}
+
+.CommentsItem__date p {
+	color: white;
+	font-size: 10px;
+	opacity: 0.4;
+}
+
+.CommentsItem__text p {
+	color: white;
+	font-size: 14px;
+	opacity: 0.8;
+}

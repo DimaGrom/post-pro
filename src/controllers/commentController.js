@@ -15,3 +15,13 @@ export const saveNewComment = async (comment) => {
 		await localforage.setItem('comments', [comment])
 	}
 }
+
+export const getCoomitsForPostController = async (id) => {
+	const comments = await localforage.getItem('comments')
+	if(await comments) {
+		const comment = await comments.filter(f => f.adressComment === id).sort((a, b) => b.datecreate - a.datecreate)
+		if(comment) return comment
+	} else {
+		return []
+	}
+}

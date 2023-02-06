@@ -108,36 +108,16 @@ export const getPostById = (id, set, token) => {
 		})
 }
 
-// export const deletePost = (id, a, set) => {
-// 	localforage.getItem('post') 
-// 		.then(posts => {
-// 			const newPosts = posts.filter(f => f.id !== id)
-// 			localforage.setItem('post', newPosts)
-// 			set(!a)
-// 			console.log('Пост удалён')
-// 		})
-// }
-
 export const deletePost = (id, a, set) => {
-	const likeDelet = null
 	localforage.getItem('post') 
 		.then(posts => {
-			const post = posts.find(f => f.id === id)
-
-			likeDelet = post.authLike
-
 			const newPosts = posts.filter(f => f.id !== id)
 			localforage.setItem('post', newPosts)
 			set(!a)
 			console.log('Пост удалён')
 		})
-		.then(() => {
-			localforage.getItem('users')
-				.then(users => {
-					// const userLikeDelete = 
-				})
-		})
 }
+
 
 // Лайкаем изрбранные посты
 export const setLike = (id, token, a, set) => {

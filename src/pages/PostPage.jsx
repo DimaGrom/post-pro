@@ -13,7 +13,8 @@ import loveImg from '../icons/like_01.png'
 import {Context} from '../utils/Context.js'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {useParams} from 'react-router-dom' 
-import {getPostById, deletePost, setLike, popularPosts, likePosts} from '../utils/postLocalForage.js'
+import {getPostById, deletePost, popularPosts, likePosts} from '../utils/postLocalForage.js'
+import {createLikeLockal, checkLike, getLikePostLockal} from '../utils/likeLocalForage.js'
 import PopularPost from '../components/PopularPost'
 import LikePost from '../components/LikePost.jsx'
 
@@ -30,12 +31,16 @@ const PostPage = () => {
 	const [colorPopul, setColorPopula] = useState(true)
 	const [colorLike, setColorLike] = useState(false)
 
+	const [likeActive, setLikeActive] = useState(false)
+
 	const colorWiteAction = {border: 'solid white 2px'}
 
 	useEffect(() => {
 		getPostById(params.id, setPost, token)
 		popularPosts(setPopular)
-		likePosts(setLikePost)
+		// likePosts(setLikePost)
+		getLikePostLockal(setLikePost, token, setSwitchLick)
+		checkLike(token, params.id, setLikeActive)
 	}, [params.id, switchLike, token])
 
 
@@ -45,12 +50,10 @@ const PostPage = () => {
 				<h1>Постов нет</h1>
 			</div>
 		)
-	} else {
-		console.log('post ', post)
-	}
+	} 
 
-	const handleLove = async () => {
-		setLike(params.id, token, switchLike, setSwitchLick)
+	const handleLove = () => {
+		createLikeLockal(params.id, token, setLikeActive, switchLike, setSwitchLick)
 	}
 
 	const handleDeletePost = () => {
@@ -91,7 +94,7 @@ const PostPage = () => {
 					 onClick={handleLove}
 					>
 						{	
-							post.nowlike && token 
+							likeActive && token 
 								? (
 									<img
 										src={likeActiveImg}

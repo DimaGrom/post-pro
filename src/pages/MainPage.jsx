@@ -17,7 +17,7 @@ const MainPage = () => {
 	const [posts, setPosts] = useState([])
 	const [populat, setPopular] = useState([])
 	const [likepost, setLikePost] = useState([])
-	const {auth, check} = useContext(Context)
+	const {auth, check, token} = useContext(Context)
 	const [colorPopul, setColorPopula] = useState(true)
 	const [colorLike, setColorLike] = useState(false)
 
@@ -28,7 +28,7 @@ const MainPage = () => {
 	useEffect(() => {
 		getAllPosts(setPosts)
 		popularPosts(setPopular)
-		likePosts(setLikePost)
+		// likePosts(setLikePost, token)
 	}, [check])
 
 	const handleCreatePost = () => {
@@ -93,7 +93,7 @@ const MainPage = () => {
 					(populat && colorPopul) && populat.map((m, k) => <PopularPost key={k} post={m} />)
 				}
 				{
-					(likepost && colorLike) && likepost.map((m, k) => <LikePost key={k} post={m} />)
+					(likepost.length !== 0 && colorLike) && likepost.map((m, k) => <LikePost key={k} post={m} />)
 				}
 			</div>
 

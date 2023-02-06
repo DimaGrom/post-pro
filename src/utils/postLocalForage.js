@@ -21,14 +21,14 @@ export const popularPosts = (set) => {
 		})
 }
 
-export const likePosts = (set) => {
-	localforage.getItem('post')
-		.then(data => {
-			if(data) {
-				return  set(data.filter(f => f.nowlike !== ''))
-			}	
-		})
-}
+// export const likePosts = (set, token) => {
+// 	localforage.getItem('post')
+// 		.then(data => {
+// 			if(data) {
+// 				set(data.filter(f => f.nowlike !== ''))
+// 			}	
+// 		})
+// }
 
 export const createPost = (post, a, set) => {
 	localforage.getItem('post')
@@ -99,7 +99,7 @@ export const getPostById = (id, set, token) => {
 				if(check === -1) {
 					return set(post)
 				} else {
-					post.nowLike = post.like[check]
+					post.nowlike = post.like[check]
 					// console.log('getPostById post', post)
 					return set(post)
 				}
@@ -120,42 +120,42 @@ export const deletePost = (id, a, set) => {
 
 
 // Лайкаем изрбранные посты
-export const setLike = (id, token, a, set) => {
-	localforage.getItem('post')
-		.then(posts => {
-			const post = posts.find(f => f.id === id)
-			const newPosts = posts.filter(f => f.id !== id)
-			const check = post.like.find(f => f.authLike === token)
-			if(check) {
-				post.like = post.like.filter(f => f.authLike !== token)
-				post.nowlike = ''
-				localforage.setItem('post', [...newPosts, post])
-				set(!a)
-			} else {
-				post.nowlike = token
-				post.like = [...post.like, {authLike: token}]
-				localforage.setItem('post', [...newPosts, post])
-				set(!a)
-			}		
-		})
-		.then(() => {
-			localforage.getItem('users')
-				.then(users => {
-					const user = users.find(f => f.id === token)
-					const check = user.likePost.find(f => f.postName === id)
-					if(check) {
-						user.likePost = user.likePost.filter(f => f.postName !== id)
-						const newUsers = users.filter(f => f.id !== token)
-						localforage.setItem('users', [...newUsers, user])
-					} else {
-						user.likePost = [...user.likePost, {postName: id}]
-						const newUsers = users.filter(f => f.id !== token)
-						localforage.setItem('users', [...newUsers, user])
-					}
-				})
-		})
+// export const setLike = (id, token, a, set) => {
+// 	localforage.getItem('post')
+// 		.then(posts => {
+// 			const post = posts.find(f => f.id === id)
+// 			const newPosts = posts.filter(f => f.id !== id)
+// 			const check = post.like.find(f => f.authLike === token)
+// 			if(check) {
+// 				post.like = post.like.filter(f => f.authLike !== token)
+// 				post.nowlike = ''
+// 				localforage.setItem('post', [...newPosts, post])
+// 				set(!a)
+// 			} else {
+// 				post.nowlike = token
+// 				post.like = [...post.like, {authLike: token}]
+// 				localforage.setItem('post', [...newPosts, post])
+// 				set(!a)
+// 			}		
+// 		})
+// 		.then(() => {
+// 			localforage.getItem('users')
+// 				.then(users => {
+// 					const user = users.find(f => f.id === token)
+// 					const check = user.likePost.find(f => f.postName === id)
+// 					if(check) {
+// 						user.likePost = user.likePost.filter(f => f.postName !== id)
+// 						const newUsers = users.filter(f => f.id !== token)
+// 						localforage.setItem('users', [...newUsers, user])
+// 					} else {
+// 						user.likePost = [...user.likePost, {postName: id}]
+// 						const newUsers = users.filter(f => f.id !== token)
+// 						localforage.setItem('users', [...newUsers, user])
+// 					}
+// 				})
+// 		})
 	
-}
+// }
 
 export const getPostForUpdat = (id, setImage, setTitle, setText) => {
 	localforage.getItem('post')

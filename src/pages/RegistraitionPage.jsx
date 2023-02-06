@@ -68,6 +68,9 @@ const RegistrationPage  = () => {
 				</label>
 				<div className='login'>
 					<button onClick={handleSubmit}>Зарегистрироваться</button>
+
+					<button onClick={handleRemoveLocal}>Удалить</button>
+
 					<NavLink to='/login'>Login</NavLink>
 				</div>
 			</form>

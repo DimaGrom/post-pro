@@ -32,6 +32,34 @@ const CommentsPage = () => {
 		setStatuse(0)
 	}
 
+	const handleTestUser = () => {
+		localforage.getItem('users')
+			.then(users => {
+				console.log('users ', users)
+			})
+	}
+
+	const handleTestComment = () => {
+		localforage.getItem('comments')
+			.then(comment => {
+				console.log('comment ', comment)
+			})
+	}
+
+	const handleTestPost = () => {
+		localforage.getItem('post')
+			.then(post => {
+				console.log('post ', post)
+			})
+	}
+
+	const handleTestListLikePost = () => {
+				listLikeAllPosts()
+	}
+
+	const handleTestdeletAllComments = () => {
+		localforage.removeItem('comments')
+	}
 
 	return (
 		<div className='CommentsPage'>
@@ -99,6 +127,13 @@ const CommentsPage = () => {
 						}
 					</form>
 
+					<div style={{display: 'flex', width: '100%', color: 'white', margin: '20px 0', justifyContent: 'space-between'}} >
+						<button onClick={handleTestUser} style={{color: 'white'}} >USER</button>
+						<button onClick={handleTestPost} style={{color: 'white'}} >POST</button>
+						<button onClick={handleTestComment} style={{color: 'white'}} >COMMENT</button>
+						<button onClick={handleTestListLikePost} style={{color: 'white'}} >LIST</button>
+						<button onClick={handleTestdeletAllComments} style={{color: 'white'}} >DELETE</button>
+					</div>
 
 				</div> {/*END CommentsPage__create_text*/}
 

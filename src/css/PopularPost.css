@@ -38,6 +38,10 @@
 }
 
 
+.PopularPost .star img {
+	width: 30px;
+}
+
 .PopularPost .star {
 	position: absolute;
 	left: 0;
@@ -51,16 +55,17 @@
 	    /*width: 20px;*/
 	}
 
+	.PopularPost .star img {
+		width: 40px;
+	}
+
 	.PopularPost .notImage {
 		display: none;
 	}
 }
 
 @media (max-width: 460px)  {
-	.PopularPost .star {
-	    width: 20px;
-	}
-
+	
 	.PopularPost .notImage {
 		display: none;
 	}

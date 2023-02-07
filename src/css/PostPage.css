@@ -16,13 +16,14 @@
 	margin-bottom: 20px;
 }
 
-@media (max-width: 700px) {
+@media (max-width: 740px) {
 	.PostPage .contentext {
 		width: 90%;
 	}
 
 	.PostPage .popular {
-		width: 7%;
+		/*width: 10%;*/
+		width: 8%;
 	}
 }
 
@@ -32,7 +33,7 @@
 
 .PostPage .like {
     position: absolute;
-    right: 0;
+    right: -11px;
     bottom: 0px;
     cursor: pointer;
 }
@@ -69,7 +70,9 @@
 
 .PostPage .like img {
 	background: white;
-	width: 20px;
+	width: 30px;
+	border: solid white 4px;
+	border-radius: 20px;
 }
 
 .PostPage .PostPage__auth {
@@ -113,6 +116,10 @@
 	justify-content: space-between;
 }
 
+.PostPage_icons img {
+	width: 30px;
+}
+
 .PostPage_icons__pablic {
 	display: flex;
 	align-items: center;
@@ -132,8 +139,10 @@
 
 .PostPage_icons__pablic div img {
 	background: white;
-	width: 10px;
-	height: 10px;
+	width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    border: solid white 4px;
 }
 
 .PostPage_icons__pablic div span {
@@ -150,7 +159,6 @@
 .PostPage_icons__pablic.edit div {
 	margin: 0 0 0 15px;
 }
-
 
 .PostPage .popular__icon {
 	display: flex;

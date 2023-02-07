@@ -92,8 +92,10 @@
 
 .PostItem_icons__pablic div img {
 	background: white;
-	width: 10px;
-	height: 10px;
+	width: 15px;
+    height: 15px;
+    border-radius: 20px;
+    border: solid white 4px;
 }
 
 .PostItem_icons__pablic div span {

@@ -135,8 +135,10 @@ const PostPage = () => {
 							</NavLink>
 						</div>
 						<div>
-							<img src={commentImg} alt='Комментарии' />
-							<span>{post.comments}</span>
+							<NavLink  to={`/${post.id}/commit`} >
+								<img src={commentImg} alt='Комментарии' />
+								<span>{post.comments}</span>
+							</NavLink>
 						</div>
 					</div>
 

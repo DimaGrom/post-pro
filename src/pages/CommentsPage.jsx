@@ -10,7 +10,7 @@ import {createComment, getCoomits} from '../utils/commitLocalforage.js'
 
 
 const CommentsPage = () => {
-	const {token} = useContext(Context)
+	const {token, auth} = useContext(Context)
 	const params = useParams()
 	const [text, setText] = useState('')
 	const [check, setCheck] = useState(true)
@@ -68,26 +68,30 @@ const CommentsPage = () => {
 
 				<div className='CommentsPage__create_text_nerrow'>
 
-					<form onSubmit={e => e.preventDefault()} >
-						<label>
-							<textarea
-								rows='3'
-								type='text'
-								value={text}
-								onChange={e => handleText(e)}
-								placeholder='Текст...'
-							/>
-						</label>
-						<div className='CommentsPage__sibmit'>
-							<button onClick={handleCreateCommint} className='submit'>Добавить</button>
-							<button className='submit'>Отмена</button>
-						</div>
-						{
-							statuse === 404 && (
-								<h3 style={{color: 'red'}}>Обязательно для заполнения</h3>
-							)
-						}
-					</form>
+					{
+						(token && auth) && (
+							<form onSubmit={e => e.preventDefault()} >
+								<label>
+									<textarea
+										rows='3'
+										type='text'
+										value={text}
+										onChange={e => handleText(e)}
+										placeholder='Текст...'
+									/>
+								</label>
+								<div className='CommentsPage__sibmit'>
+									<button onClick={handleCreateCommint} className='submit'>Добавить</button>
+									<button className='submit'>Отмена</button>
+								</div>
+								{
+									statuse === 404 && (
+										<h3 style={{color: 'red'}}>Обязательно для заполнения</h3>
+									)
+								}
+							</form>
+						)
+					}			
 
 				</div> {/*END CommentsPage__create_text_nerrow*/}
 
@@ -97,9 +101,9 @@ const CommentsPage = () => {
 							? (
 								comments.map(m => <CommentsItem key={m.id} comment={m} token={token} />)
 							) : (
-								<div class='CommentsPage__not_comment'>Комментариев нет</div>
+								<div className='CommentsPage__not_comment'>Комментариев нет</div>
 							)
-					}
+					} 
 				</div> {/*END CommentsPage__context*/}
 
 				<div className='CommentsPage__create_text'>

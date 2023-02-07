@@ -23,12 +23,9 @@ const MainPage = () => {
 
 	const colorWiteAction = {border: 'solid white 2px'}
 
-	console.log('likepost ', likepost)
-
 	useEffect(() => {
 		getAllPosts(setPosts)
 		popularPosts(setPopular)
-		// likePosts(setLikePost, token)
 	}, [check])
 
 	const handleCreatePost = () => {
@@ -74,19 +71,27 @@ const MainPage = () => {
 			<div className="popular">
 				<div className='popular__icon'>
 
-					<img
-						 onClick={handlePopul} 
-						 style={colorPopul ? colorWiteAction : undefined } 
-						 src={popularImg} 
-						 alt='Популярные' 
-					 />
+					{
+						(auth && token) && (
+							<img
+								 onClick={handlePopul} 
+								 style={colorPopul ? colorWiteAction : undefined } 
+								 src={popularImg} 
+								 alt='Популярные' 
+							/>
+						)
+					}
 
-					<img 
-						onClick={handleLicke} 
-						style={colorLike ? colorWiteAction : undefined } 
-						src={loveImg} 
-						alt='Любимые' 
-					/>
+					{
+						(auth && token) && (
+							<img 
+								onClick={handleLicke} 
+								style={colorLike ? colorWiteAction : undefined } 
+								src={loveImg} 
+								alt='Любимые' 
+							/>
+						)
+					}		
 
 				</div>
 				{

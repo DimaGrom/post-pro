@@ -44,11 +44,19 @@
 	bottom: 0;
 }
 
+.LikePost .star img {
+	width: 30px;
+}
+
 @media (max-width: 740px)  {
 	.LikePost .star {
 		display: inline-block;
 		position: relative;
 	    /*width: 20px;*/
+	}
+
+	.LikePost .star img {
+		width: 40px;
 	}
 
 	.LikePost .notImage {
@@ -57,8 +65,9 @@
 }
 
 @media (max-width: 460px)  {
-	.LikePost .star {
-	    width: 20px;
+	
+	.LikePost .star img {
+		width: 40px;
 	}
 
 	.LikePost .notImage {

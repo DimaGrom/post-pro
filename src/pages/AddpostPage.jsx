@@ -23,9 +23,9 @@ const AddpostPage  = () => {
 		navigate('/')	
 	}
 
-	const handleSubmitTest = () => {
-		localforage.getItem("post")
-	}
+	// const handleSubmitTest = () => {
+	// 	localforage.getItem("post")
+	// }
 
 	const handleSubmitremove = () => {
 		localforage.removeItem('post')

@@ -51,6 +51,10 @@ export const getLikePostLockal = async (setLikePost, token) => {
 	const user = await users.find(f => f.id === token)
 
 	const likePosts = await posts?.filter(f => user?.likePost.indexOf(f.id) > -1 )
+	if(likePosts) {
+		setLikePost(likePosts)
+	} else {
+		setLikePost([])
+	}
 	
-	setLikePost(likePosts)
 }

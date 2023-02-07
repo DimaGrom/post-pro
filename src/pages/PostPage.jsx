@@ -87,7 +87,7 @@ const PostPage = () => {
 					{
 						(auth && token) && (
 							<div
-							 className='like'
+							 className={post.image ? 'like' : 'notImg'}
 							 onClick={handleLove}
 							>
 								{	

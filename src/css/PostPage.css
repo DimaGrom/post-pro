@@ -38,6 +38,20 @@
     cursor: pointer;
 }
 
+.PostPage .notImg {
+	position: absolute;
+    right: 12px;
+    bottom: 0px;
+    cursor: pointer;
+} 
+
+.PostPage .notImg img {
+	background: white;
+	width: 30px;
+	border: solid white 4px;
+	border-radius: 20px;
+}
+
 .PostPage .flex {
 	display: flex;
 }
@@ -51,9 +65,9 @@
 
 .PostPage .notimage {
 	flex: 0 1 100%;
-	height: 2px;
 	overflow: hidden;
 	background: white;
+	margin-top: 80px;
 }
 
 @media (max-width: 700px) {

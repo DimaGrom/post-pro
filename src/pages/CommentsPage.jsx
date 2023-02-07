@@ -7,6 +7,7 @@ import {listLikeAllPosts} from '../utils/postLocalForage.js'
 import {Context} from '../utils/Context.js'
 import {useParams} from 'react-router-dom'
 import {createComment, getCoomits} from '../utils/commitLocalforage.js'
+import {NavLink} from 'react-router-dom'
 
 
 const CommentsPage = () => {
@@ -101,45 +102,56 @@ const CommentsPage = () => {
 							? (
 								comments.map(m => <CommentsItem key={m.id} comment={m} token={token} />)
 							) : (
-								<div className='CommentsPage__not_comment'>Комментариев нет</div>
+								<div className='CommentsPage__not_comment'>
+									<h5>Комментариев нет</h5>
+									{
+										(!token && !auth) && (
+											<p>
+												Что-бы оставить момментарии нужно 
+												<NavLink to='/registration'>зарезистрироваться
+												</NavLink>
+											</p>
+										)
+									}					
+								</div>
 							)
 					} 
 				</div> {/*END CommentsPage__context*/}
 
-				<div className='CommentsPage__create_text'>
-					<h4>Добавить комментарий</h4>
+				{
+					(token && auth) && (
+						<div className='CommentsPage__create_text'>
+							<h4>Добавить комментарий</h4>
 
-					<form onSubmit={e => e.preventDefault()} >
-						<label>
-							Текст поста:
-							<textarea
-								rows='5'
-								type='text'
-								value={text}
-								onChange={e => handleText(e)}
-								placeholder='Текст...'
-							/>
-						</label>
-						<div className='CommentsPage__sibmit'>
-							<button onClick={handleCreateCommint} className='submit'>Добавить</button>
-							<button className='submit'>Отмена</button>
-						</div>
-						{
-							statuse === 404 && (
-								<h3 style={{color: 'red'}}>Обязательно для заполнения</h3>
-							)
-						}
-					</form>
+							<form onSubmit={e => e.preventDefault()} >
+								<label>
+									Текст поста:
+									<textarea
+										rows='5'
+										type='text'
+										value={text}
+										onChange={e => handleText(e)}
+										placeholder='Текст...'
+									/>
+								</label>
+								<div className='CommentsPage__sibmit'>
+									<button onClick={handleCreateCommint} className='submit'>Добавить</button>
+									<button className='submit'>Отмена</button>
+								</div>
+								{
+									statuse === 404 && (
+										<h3 style={{color: 'red'}}>Обязательно для заполнения</h3>
+									)
+								}
+							</form>
 
-					<div style={{display: 'flex', width: '100%', color: 'white', margin: '20px 0', justifyContent: 'space-between'}} >
-						<button onClick={handleTestUser} style={{color: 'white'}} >USER</button>
-						<button onClick={handleTestPost} style={{color: 'white'}} >POST</button>
-						<button onClick={handleTestComment} style={{color: 'white'}} >COMMENT</button>
-						<button onClick={handleTestListLikePost} style={{color: 'white'}} >LIST</button>
-						<button onClick={handleTestdeletAllComments} style={{color: 'white'}} >DELETE</button>
-					</div>
+							
 
-				</div> {/*END CommentsPage__create_text*/}
+						</div> 
+					)
+				}
+
+						
 
 			</div> {/*END CommentsPage__wraper*/}
 

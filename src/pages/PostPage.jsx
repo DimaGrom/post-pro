@@ -11,13 +11,11 @@ import likeActiveImg from '../icons/heart_02.png'
 import popularImg from '../icons/popular_04.png'
 import loveImg from '../icons/like_01.png'
 import {Context} from '../utils/Context.js'
-import {NavLink, useNavigate} from 'react-router-dom'
-import {useParams} from 'react-router-dom' 
-import {getPostById, deletePost, popularPosts, likePosts} from '../utils/postLocalForage.js'
+import {NavLink, useNavigate, useParams} from 'react-router-dom'
+import {getPostById, deletePost, popularPosts} from '../utils/postLocalForage.js'
 import {createLikeLockal, checkLike, getLikePostLockal} from '../utils/likeLocalForage.js'
 import PopularPost from '../components/PopularPost'
 import LikePost from '../components/LikePost.jsx'
-
 
 
 const PostPage = () => {
@@ -26,19 +24,16 @@ const PostPage = () => {
 	const [post, setPost] = useState('')
 	const [populat, setPopular] = useState([])
 	const [likepost, setLikePost] = useState([])
-	const {token, check, setCheck} = useContext(Context)
+	const {auth, token, check, setCheck} = useContext(Context)
 	const [switchLike, setSwitchLick] = useState(true)
 	const [colorPopul, setColorPopula] = useState(true)
 	const [colorLike, setColorLike] = useState(false)
-
 	const [likeActive, setLikeActive] = useState(false)
-
 	const colorWiteAction = {border: 'solid white 2px'}
 
 	useEffect(() => {
 		getPostById(params.id, setPost, token)
 		popularPosts(setPopular)
-		// likePosts(setLikePost)
 		getLikePostLockal(setLikePost, token, setSwitchLick)
 		checkLike(token, params.id, setLikeActive)
 	}, [params.id, switchLike, token])
@@ -89,27 +84,30 @@ const PostPage = () => {
 							 )
 						}						
 					</div>
-					<div
-					 className='like'
-					 onClick={handleLove}
-					>
-						{	
-							likeActive && token 
-								? (
-									<img
-										src={likeActiveImg}
-										alt='Like'
-									/>
-								) : (
-									<img
-										src={likeImg}
-										alt='Like'
-									/>
-								)
-								
-						}
-
-					</div>
+					{
+						(auth && token) && (
+							<div
+							 className='like'
+							 onClick={handleLove}
+							>
+								{	
+									likeActive && token 
+										? (
+											<img
+												src={likeActiveImg}
+												alt='Like'
+											/>
+										) : (
+											<img
+												src={likeImg}
+												alt='Like'
+											/>
+										)
+										
+								}
+							</div>
+						)
+					}	
 				</div>
 
 				<div className='name'>
@@ -162,23 +160,27 @@ const PostPage = () => {
 			</div>
 
 			<div className="popular">
-				<div className='popular__icon'>
 
-					<img
-						 onClick={handlePopul} 
-						 style={colorPopul ? colorWiteAction : undefined } 
-						 src={popularImg} 
-						 alt='Популярные' 
-					 />
+				{
+					(auth && token) && (
+						<div className='popular__icon'>
+							<img
+								 onClick={handlePopul} 
+								 style={colorPopul ? colorWiteAction : undefined } 
+								 src={popularImg} 
+								 alt='Популярные' 
+							 />
 
-					<img 
-						onClick={handleLicke} 
-						style={colorLike ? colorWiteAction : undefined } 
-						src={loveImg} 
-						alt='Любимые' 
-					/>
+							<img 
+								onClick={handleLicke} 
+								style={colorLike ? colorWiteAction : undefined } 
+								src={loveImg} 
+								alt='Любимые' 
+							/>
+						</div>
+					)
+				}	
 
-				</div>
 				{
 					(populat && colorPopul) && populat.map((m, k) => <PopularPost key={k} post={m} />)
 				}

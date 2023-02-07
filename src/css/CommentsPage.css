@@ -16,17 +16,34 @@
 	border-radius: 10px;
 }
 
-.CommentsPage__not_comment {
+.CommentsPage__not_comment h5 {
+	color: white;
 	font-size: 14px;
 	display: flex;
 	justify-content: center;
 	margin: 10px 0;
 }
 
+.CommentsPage__not_comment p {
+	color: white;
+	display: flex; justify-content: center;
+}
+
+.CommentsPage__not_comment p a {
+	color: white;
+    margin-left: 5px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: 0.4s;
+}
+
+.CommentsPage__not_comment p a:hover {
+    opacity: 1;
+}
+
 .CommentsPage__create_text {
 	width: 30%;
 }
-
 
 .CommentsPage__create_text h4 {
 	color: #d1d5db;

@@ -2,7 +2,8 @@ import React, {useEffect, useState, useContext} from 'react'
 import '../css/style.css'
 import '../css/MainPage.css'
 import {useNavigate} from 'react-router-dom'
-import {getAllPosts, popularPosts, likePosts} from '../utils/postLocalForage.js'
+import {getAllPosts, popularPosts} from '../utils/postLocalForage.js'
+import {getLikePostLockal} from '../utils/likeLocalForage.js'
 import PostItem from '../components/PostItem.jsx'
 import PopularPost from '../components/PopularPost'
 import LikePost from '../components/LikePost.jsx'
@@ -26,7 +27,15 @@ const MainPage = () => {
 	useEffect(() => {
 		getAllPosts(setPosts)
 		popularPosts(setPopular)
-	}, [check])
+		if(auth) {
+			getLikePostLockal(setLikePost, token)
+		} else {
+			setColorPopula(true)
+		}
+	}, [auth, token, check, colorPopul, colorLike])
+
+	console.log('MainPage auth ', auth)
+	console.log('MainPage populat ', populat)
 
 	const handleCreatePost = () => {
 		navigate('/new')
@@ -98,7 +107,7 @@ const MainPage = () => {
 					(populat && colorPopul) && populat.map((m, k) => <PopularPost key={k} post={m} />)
 				}
 				{
-					(likepost.length !== 0 && colorLike) && likepost.map((m, k) => <LikePost key={k} post={m} />)
+					(auth && token && likepost.length !== 0 && colorLike) && likepost.map((m, k) => <LikePost key={k} post={m} />)
 				}
 			</div>
 

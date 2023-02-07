@@ -25,14 +25,20 @@ const MainPage = () => {
 	const colorWiteAction = {border: 'solid white 2px'}
 
 	useEffect(() => {
-		getAllPosts(setPosts)
-		popularPosts(setPopular)
+		// getAllPosts(setPosts)
+		// popularPosts(setPopular)
 		if(auth) {
 			getLikePostLockal(setLikePost, token)
 		} else {
 			setColorPopula(true)
 		}
-	}, [auth, token, check, colorPopul, colorLike])
+	}, [auth, colorPopul, colorLike])
+
+
+	useEffect(() => {
+		getAllPosts(setPosts)
+		popularPosts(setPopular)
+	}, [])
 
 	console.log('MainPage auth ', auth)
 	console.log('MainPage populat ', populat)

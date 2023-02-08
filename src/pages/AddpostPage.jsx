@@ -76,7 +76,7 @@ const AddpostPage  = () => {
 					<button onClick={handleCreatePost} className='submit'>Добавить</button>
 					
 
-					<button onClick={handleSubmitremove} className='submit'>Удалит все посты</button>
+				
 					
 					
 

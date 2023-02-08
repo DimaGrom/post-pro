@@ -21,7 +21,7 @@ const RegistrationPage  = () => {
 		if(auth) {
 				navigate('/')
 			}	
-	}, [auth])
+	}, [auth, navigate])
 
 	const handleSubmit = () => {
 			registerUser(username, password, setAuth, setStatuse)	
@@ -69,7 +69,7 @@ const RegistrationPage  = () => {
 				<div className='login'>
 					<button onClick={handleSubmit}>Зарегистрироваться</button>
 
-					<button onClick={handleRemoveLocal}>Удалить</button>
+					
 
 					<NavLink to='/login'>Login</NavLink>
 				</div>

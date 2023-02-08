@@ -38,7 +38,7 @@ const MainPage = () => {
 	useEffect(() => {
 		getAllPosts(setPosts)
 		popularPosts(setPopular)
-	}, [])
+	}, [check])
 
 	console.log('MainPage auth ', auth)
 	console.log('MainPage populat ', populat)

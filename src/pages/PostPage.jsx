@@ -36,7 +36,7 @@ const PostPage = () => {
 		popularPosts(setPopular)
 		getLikePostLockal(setLikePost, token, setSwitchLick)
 		checkLike(token, params.id, setLikeActive)
-	}, [params.id, token])
+	}, [params.id, switchLike, token])
 
 
 	if(!post) {

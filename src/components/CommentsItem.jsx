@@ -3,9 +3,6 @@ import '../css/CommentsItem.css'
 
 const CommentsItem = ({comment, token}) => {
 
-	// console.log(comment)
-	console.log(token)
-
 	return (
 		<div className={comment.authorID !== token ? 'CommentsItem' : 'CommentsItem right'} >	
 

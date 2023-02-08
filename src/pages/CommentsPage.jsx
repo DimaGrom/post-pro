@@ -136,7 +136,7 @@ const CommentsPage = () => {
 								</label>
 								<div className='CommentsPage__sibmit'>
 									<button onClick={handleCreateCommint} className='submit'>Добавить</button>
-									<button className='submit'>Отмена</button>
+									<button onClick={() => setText('')} className='submit'>Отмена</button>
 								</div>
 								{
 									statuse === 404 && (
@@ -145,13 +145,7 @@ const CommentsPage = () => {
 								}
 							</form>
 
-							<div style={{display: 'flex', width: '100%', color: 'white', margin: '20px 0', justifyContent: 'space-between'}} >
-								<button onClick={handleTestUser} style={{color: 'white'}} >USER</button>
-								<button onClick={handleTestPost} style={{color: 'white'}} >POST</button>
-								<button onClick={handleTestComment} style={{color: 'white'}} >COMMENT</button>
-								<button onClick={handleTestListLikePost} style={{color: 'white'}} >LIST</button>
-								<button onClick={handleTestdeletAllComments} style={{color: 'white'}} >DELETE</button>
-							</div>
+							
 
 						</div> 
 					)

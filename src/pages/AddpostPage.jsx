@@ -23,9 +23,9 @@ const AddpostPage  = () => {
 		navigate('/')	
 	}
 
-	// const handleSubmitTest = () => {
-	// 	localforage.getItem("post")
-	// }
+	const handleSubmitTest = () => {
+		localforage.getItem("post")
+	}
 
 	const handleSubmitremove = () => {
 		localforage.removeItem('post')
@@ -76,7 +76,7 @@ const AddpostPage  = () => {
 					<button onClick={handleCreatePost} className='submit'>Добавить</button>
 					
 
-					<button onClick={handleSubmitremove} className='submit'>Удалит все посты</button>
+				
 					
 					
 

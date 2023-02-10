@@ -34,9 +34,16 @@ const PostPage = () => {
 	useEffect(() => {
 		getPostById(params.id, setPost, token)
 		popularPosts(setPopular)
-		getLikePostLockal(setLikePost, token, setSwitchLick)
 		checkLike(token, params.id, setLikeActive)
-	}, [params.id, switchLike, token])
+	}, [params.id, token])
+
+	useEffect(() => {
+		getLikePostLockal(setLikePost, token, setSwitchLick)
+	}, [colorLike, switchLike, token])
+
+	useEffect(() => {
+		popularPosts(setPopular)
+	}, [colorPopul, switchLike])
 
 
 	if(!post) {

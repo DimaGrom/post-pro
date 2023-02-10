@@ -25,8 +25,6 @@ const MainPage = () => {
 	const colorWiteAction = {border: 'solid white 2px'}
 
 	useEffect(() => {
-		// getAllPosts(setPosts)
-		// popularPosts(setPopular)
 		if(auth) {
 			getLikePostLockal(setLikePost, token)
 		} else {
@@ -39,9 +37,6 @@ const MainPage = () => {
 		getAllPosts(setPosts)
 		popularPosts(setPopular)
 	}, [check])
-
-	console.log('MainPage auth ', auth)
-	console.log('MainPage populat ', populat)
 
 	const handleCreatePost = () => {
 		navigate('/new')
